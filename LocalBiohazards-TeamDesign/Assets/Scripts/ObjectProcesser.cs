@@ -38,6 +38,14 @@ public class ObjectProcesser : MonoBehaviour
         {
             eventCore.addToInventoryEV.Invoke(interactedObject.name);
         }
+
+        if (obj.transportPlayer)
+        {
+            //just moves the camera as the player rn
+            //obviously this will change once we get the player and we'll just transport it
+            GameObject player = GameObject.Find("Main Camera");
+            player.transform.position = obj.transportPlayerCoords;
+        }
     }
 
     //checks whether all the conditions are fulfilled in the obj
