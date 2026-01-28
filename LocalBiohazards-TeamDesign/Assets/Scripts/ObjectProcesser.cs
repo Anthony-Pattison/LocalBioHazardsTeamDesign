@@ -6,6 +6,8 @@ public class ObjectProcesser : MonoBehaviour
     EventCore eventCore;
     Inventory inventory;
     FlagCore flagCore;
+
+    Object obj;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,12 +17,13 @@ public class ObjectProcesser : MonoBehaviour
         flagCore = GameObject.Find("FlagCore").GetComponent<FlagCore>();
 
         eventCore.processObjectEV.AddListener(ProcessObject);
+        eventCore.transportPlayerEV.AddListener(TeleportPlayer);
     }
 
     void ProcessObject(GameObject interactedObject)
     {
-        print($"procesing object: {interactedObject.name}");
-        Object obj = interactedObject.GetComponent<Object>();
+        print($"processing object: {interactedObject.name}");
+        obj = interactedObject.GetComponent<Object>();
 
         bool passedCondition = ConditionCheck(obj);
         if (!passedCondition)
@@ -41,11 +44,18 @@ public class ObjectProcesser : MonoBehaviour
 
         if (obj.transportPlayer)
         {
-            //just moves the camera as the player rn
-            //obviously this will change once we get the player and we'll just transport it
-            GameObject player = GameObject.Find("Main Camera");
-            player.transform.position = obj.transportPlayerCoords;
+           //does the transition first
+           //might add functionality for it to be optional later on and for multiple types
+            eventCore.startScreenTransitionEV.Invoke("fadeToBlack");
         }
+    }
+
+    void TeleportPlayer()
+    {
+        //just moves the camera as the player rn
+        //obviously this will change once we get the player and we'll just transport it
+        GameObject player = GameObject.Find("Main Camera");
+        player.transform.position = obj.transportPlayerCoords;
     }
 
     //checks whether all the conditions are fulfilled in the obj
