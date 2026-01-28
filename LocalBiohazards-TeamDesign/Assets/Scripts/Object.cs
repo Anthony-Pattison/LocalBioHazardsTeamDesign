@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class Object : MonoBehaviour
 {
+    EventCore eventCore;
+    
     //things that will happen when this object is interacted with and processed
     [Header("Actions\n------------------")]
     [Header("General")]
@@ -27,5 +29,28 @@ public class Object : MonoBehaviour
     [Header("------------------\nConditions")]
     public List<string> inventoryCondition; //an object must be in inventory
     public List<string> flagCondition; //a flag from the flag core must be true
-    
+
+    private void Start()
+    {
+        eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        {
+            print("player enters");
+            eventCore.reserveObjectEV.Invoke(gameObject);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        {
+            print("player exits");
+            eventCore.unreserveObjectEV.Invoke();
+        }
+    }
+
 }
