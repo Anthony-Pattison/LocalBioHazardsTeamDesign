@@ -20,6 +20,7 @@ public class EventCore : MonoBehaviour
     public UnityEvent<string> startScreenTransitionEV;
 
     [HideInInspector]
+
     public UnityEvent transportPlayerEV;
 
     [HideInInspector]
