@@ -8,6 +8,14 @@ public class EventCore : MonoBehaviour
     public UnityEvent<GameObject> processObjectEV;
 
     [HideInInspector]
+    //event that reserves an object for object processing. happens when the player enters the collision area of an object
+    public UnityEvent<GameObject> reserveObjectEV;
+
+    [HideInInspector]
+    //event that unreserves an object for object processing. happens when a player exits the collision area of an object
+    public UnityEvent unreserveObjectEV;
+
+    [HideInInspector]
     //an outcome to processing an object: event for adding an item to an object
     public UnityEvent<string> addToInventoryEV;
 
@@ -20,7 +28,6 @@ public class EventCore : MonoBehaviour
     public UnityEvent<string> startScreenTransitionEV;
 
     [HideInInspector]
-
     public UnityEvent transportPlayerEV;
 
     [HideInInspector]
@@ -30,7 +37,6 @@ public class EventCore : MonoBehaviour
     //for testing purposes in order to invoke the event through pressing a button
     public void InvokeProcessObjectEV(GameObject gameObj)
     {
-        print("ajfsdokfjsdofj");
         processObjectEV.Invoke(gameObj);
     }
 }
