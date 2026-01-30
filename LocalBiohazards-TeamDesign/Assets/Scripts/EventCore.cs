@@ -17,7 +17,7 @@ public class EventCore : MonoBehaviour
 
     [HideInInspector]
     //an outcome to processing an object: event for adding an item to an object
-    public UnityEvent<string> addToInventoryEV;
+    public UnityEvent<Items> addToInventoryEV;
 
     [HideInInspector]
     //follows the addToInventory EV; event for updating the inventory display since the item list has changed

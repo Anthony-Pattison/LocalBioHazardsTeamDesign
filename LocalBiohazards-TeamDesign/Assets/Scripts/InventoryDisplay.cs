@@ -23,7 +23,7 @@ public class InventoryDisplay : MonoBehaviour
     {
         inventoryItemsText.text = "";
 
-        foreach (string item in inventory.itemList)
+        foreach (Items item in inventory.itemList)
         {
             inventoryItemsText.text += $"{item},\n";
         }

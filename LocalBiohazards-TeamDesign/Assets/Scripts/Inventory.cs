@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     EventCore eventCore;
-    public List<string> itemList = new List<string>();
+    public List<Items> itemList = new List<Items>();
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
         
     }
 
-    void AddToInventory(string item)
+    void AddToInventory(Items item)
     {
         
         itemList.Add(item);

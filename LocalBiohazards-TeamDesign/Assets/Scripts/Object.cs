@@ -11,6 +11,7 @@ public class Object : MonoBehaviour
     [Header("General")]
     public bool disableOnInteraction;
     public bool addToInventory;
+    public Items item;
 
     //activates a flag as an action
     [Header("Flag Activation")]

@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     NavMeshAgent agent;
 
     public LayerMask clickableLayers;
-
+    public Transform CameraPos;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -15,7 +15,11 @@ public class PlayerController : MonoBehaviour
         assignInputs();
 
     }
-
+    private void Update()
+    {
+        if(CameraPos != null)
+            transform.LookAt(CameraPos.position);
+    }
     void assignInputs()
     {
         input.Main.Move.performed += ctx => ClickToMove();
