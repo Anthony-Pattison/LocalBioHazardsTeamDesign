@@ -34,6 +34,9 @@ public class EventCore : MonoBehaviour
     //event for finishing a transition, which unfreezes input and ai
     public UnityEvent finishTransitionEV;
 
+    [HideInInspector]
+    //event for the player droping a trap on the ground
+    public UnityEvent dropingTrapEV;
     //for testing purposes in order to invoke the event through pressing a button
     public void InvokeProcessObjectEV(GameObject gameObj)
     {

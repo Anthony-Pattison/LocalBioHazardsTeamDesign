@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0cde7a04792bf14f8ef5135b5527a8e, type: 3}
-  m_Name: Knife
+  m_Name: BearTrap
   m_EditorClassIdentifier: 
-  ItemName: KNIFE
-  IsKeyItem: 1
-  IsTrapItem: 0
-  ItemDiscription: 'A knife that''s used to kill smaller victims.
+  ItemName: Bear Trap
+  ItemImage: {fileID: 21300000, guid: de872f3af6e3dd9498311f6efcda1f61, type: 3}
+  IsKeyItem: 0
+  IsTrapItem: 1
+  ItemDiscription: 'Can be place on the ground. If Someone walks into it the trap
+    will snap down on their ankle. Can be picked up after placement.
 
-    Key Item'
+    Is a trap
+    item'

@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    EventCore eventCore;
     CustomAction input;
     NavMeshAgent agent;
 
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public Transform CameraPos;
     private void Awake()
     {
+        eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         agent = GetComponent<NavMeshAgent>();
         input = new CustomAction();
         assignInputs();
@@ -19,6 +21,13 @@ public class PlayerController : MonoBehaviour
     {
         if(CameraPos != null)
             transform.LookAt(CameraPos.position);
+        GetPlayerInput();
+    }
+    void GetPlayerInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Q)){
+            eventCore.dropingTrapEV.Invoke();
+        }
     }
     void assignInputs()
     {
