@@ -12645,6 +12645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - {fileID: 11400000, guid: b5611ab731498344f8d5e6929af26358, type: 2}
+  - {fileID: 11400000, guid: b5611ab731498344f8d5e6929af26358, type: 2}
   Knife: {fileID: 11400000, guid: 6fd4a18de3b0509488ac0b511559b73d, type: 2}
   TrapObject: {fileID: 6406452607573774558, guid: 28dcbfe913b137d4da3cc406567774d8, type: 3}
 --- !u!4 &1578351352

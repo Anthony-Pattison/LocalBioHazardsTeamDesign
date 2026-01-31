@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+        PlayerTransform = GameObject.Find("{Player").transform;
         eventCore.dropingTrapEV.AddListener(DropItem);
         eventCore.addToInventoryEV.AddListener(AddToInventory);
         AddToInventory(Knife);
@@ -33,7 +34,7 @@ public class Inventory : MonoBehaviour
                 Debug.Log("Faild to find a trap item");
                 continue;
             }
-            Instantiate(TrapObject, PlayerTransform);
+            Instantiate(TrapObject, PlayerTransform.position, Quaternion.identity);
             itemList.Remove(_Item);
             eventCore.updateInventoryDisplayEV.Invoke();
         }
