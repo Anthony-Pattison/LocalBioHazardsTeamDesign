@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -26,19 +27,34 @@ public class Inventory : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Drops one kind of trap on the ground when the player presses<br/>
+    /// the Q key <br/>
+    /// returns "Faild to find trap." if there are no traps in the inventory
+    /// </summary>
     void DropItem()
     {
+        // need to modify the list outside of the for loop beacuse c#
+        // throws an error
+        Items _TrapToUse = null;
         foreach (Items _Item in itemList)
         {
             if (!_Item.IsTrapItem) {
-                Debug.Log("Faild to find a trap item");
                 continue;
             }
-            Instantiate(TrapObject, PlayerTransform.position, Quaternion.identity);
-            itemList.Remove(_Item);
-            eventCore.updateInventoryDisplayEV.Invoke();
+            _TrapToUse = _Item;
         }
+        // removing from the list
+        if (_TrapToUse != null)
+        {
+            Instantiate(TrapObject, PlayerTransform.position, Quaternion.identity);
+            itemList.Remove(_TrapToUse);
+            eventCore.updateInventoryDisplayEV.Invoke();
+            return;
+        }
+        Debug.Log("Faild to find a trap item.");
     }
+
     void AddToInventory(Items item)
     {
         
