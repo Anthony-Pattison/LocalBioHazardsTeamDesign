@@ -37,6 +37,7 @@ public class EventCore : MonoBehaviour
     [HideInInspector]
     //event for the player droping a trap on the ground
     public UnityEvent dropingTrapEV;
+
     //for testing purposes in order to invoke the event through pressing a button
     public void InvokeProcessObjectEV(GameObject gameObj)
     {

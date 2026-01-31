@@ -53,5 +53,4 @@ public class Object : MonoBehaviour
             eventCore.unreserveObjectEV.Invoke();
         }
     }
-
 }

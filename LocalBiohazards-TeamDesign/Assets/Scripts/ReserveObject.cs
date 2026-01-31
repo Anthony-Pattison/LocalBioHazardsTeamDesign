@@ -35,12 +35,13 @@ public class ReserveObject : MonoBehaviour
 
     void executeObjectProcessing()
     {
-        if (!agent.isStopped)
+        if (agent.velocity.magnitude > 0.2f)
             return;
 
         if (reservedObj == null)
             return;
 
         eventCore.processObjectEV.Invoke(reservedObj);
+        reservedObj = null;
     }
 }
