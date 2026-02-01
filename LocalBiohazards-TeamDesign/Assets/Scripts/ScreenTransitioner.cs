@@ -8,6 +8,7 @@ public class ScreenTransitioner : MonoBehaviour
 
     [Header("References")]
     public RawImage blackImage;
+    public Renderer dissolveNoiseGameobject;
 
     [Header("Values")]
     [Tooltip("Speed of transition. Measured in percentage (100 = 1x = 1 second)")]
@@ -29,6 +30,11 @@ public class ScreenTransitioner : MonoBehaviour
         if (transitionType == "fadeToBlack")
         {
             StartCoroutine(FadeToBlackTransition());
+        }
+        else if (transitionType == "dissolvingNoise") 
+        {
+            print("doing this dumbshit");
+            StartCoroutine(DissolvingNoiseTransition());
         }
         else
         {
@@ -71,6 +77,42 @@ public class ScreenTransitioner : MonoBehaviour
         //finish fade out
         newColor.a = 0;
         blackImage.color = newColor;
+
+        yield return new WaitForSeconds(transitionFinishDelay);
+        eventCore.finishTransitionEV.Invoke();
+    }
+
+    IEnumerator DissolvingNoiseTransition()
+    {
+        float materialTransparency = 1.1f;
+
+        //fade in
+        while (materialTransparency > -0.1f)
+        {
+            materialTransparency -= (transitionSpeed / 100) * Time.deltaTime;
+            dissolveNoiseGameobject.material.SetFloat("_DissolveStrength", materialTransparency);
+            yield return new WaitForEndOfFrame();
+        }
+
+        //finish fade in
+        materialTransparency = -0.1f;
+        dissolveNoiseGameobject.material.SetFloat("_DissolveStrength", materialTransparency);
+
+        eventCore.transportPlayerEV.Invoke();
+
+        yield return new WaitForSeconds(transitionSwapDelay);
+
+        //fade out
+        while (materialTransparency < 1.1)
+        {
+            materialTransparency += (transitionSpeed / 100) * Time.deltaTime;
+            dissolveNoiseGameobject.material.SetFloat("_DissolveStrength", materialTransparency);
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+
+        //finish fade out
+        materialTransparency = 1.1f;
+        dissolveNoiseGameobject.material.SetFloat("_DissolveStrength", materialTransparency);
 
         yield return new WaitForSeconds(transitionFinishDelay);
         eventCore.finishTransitionEV.Invoke();

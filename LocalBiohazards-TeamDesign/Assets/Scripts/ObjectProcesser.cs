@@ -46,7 +46,7 @@ public class ObjectProcesser : MonoBehaviour
         {
            //does the transition first
            //might add functionality for it to be optional later on and for multiple types
-            eventCore.startScreenTransitionEV.Invoke("fadeToBlack");
+            eventCore.startScreenTransitionEV.Invoke("dissolvingNoise");
         }
 
         //this outcome must always be last
