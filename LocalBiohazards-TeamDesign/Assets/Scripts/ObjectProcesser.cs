@@ -48,6 +48,12 @@ public class ObjectProcesser : MonoBehaviour
            //might add functionality for it to be optional later on and for multiple types
             eventCore.startScreenTransitionEV.Invoke("fadeToBlack");
         }
+
+        //this outcome must always be last
+        if (obj.destroyOnInteraction)
+        {
+            Destroy(interactedObject);
+        }
     }
 
     void TeleportPlayer()

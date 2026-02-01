@@ -8,6 +8,8 @@ public class ReserveObject : MonoBehaviour
     
     public GameObject reservedObj = null;
 
+    bool queuedInteraction;
+
     void Start()
     {
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
@@ -19,8 +21,12 @@ public class ReserveObject : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        executeObjectProcessing();
+    {        
+        if (queuedInteraction)
+            executeObjectProcessing();
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+            queuedInteraction = true;
     }
 
     void reserveObject(GameObject selectedObj)
@@ -38,10 +44,13 @@ public class ReserveObject : MonoBehaviour
         if (agent.velocity.magnitude > 0.2f)
             return;
 
+        queuedInteraction = false;
+
         if (reservedObj == null)
             return;
 
         eventCore.processObjectEV.Invoke(reservedObj);
         reservedObj = null;
+        
     }
 }
