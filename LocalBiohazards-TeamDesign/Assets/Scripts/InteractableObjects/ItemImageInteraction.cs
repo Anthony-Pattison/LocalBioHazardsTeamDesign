@@ -2,18 +2,25 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using TMPro;
 [RequireComponent(typeof(Animator))]
 public class ItemImageInteraction : MonoBehaviour
 {
+    public Items Item;
     Vector3 NormalSize;
     Vector3 BigSize;
     Animator animator;
+    public GameObject TextBox;
+    TextMeshProUGUI ItemDisc;
+    float timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         NormalSize = transform.localScale;
         BigSize = transform.localScale + Vector3.one;
         animator = GetComponent<Animator>();
+        ItemDisc = TextBox.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>(); 
     }
 
     // Update is called once per frame
@@ -28,8 +35,16 @@ public class ItemImageInteraction : MonoBehaviour
         {
             animator.SetBool("Shake", true);
             transform.localScale = BigSize;
+            timer += Time.deltaTime;
+            if(timer > 1)
+            {
+                TextBox.SetActive(true);
+                ItemDisc.text = Item.ItemDiscription;
+            }
             return;
         }
+        TextBox.SetActive(false);
+        timer = 0;
         animator.SetBool("Shake", false);
         transform.localScale = NormalSize;
     }
