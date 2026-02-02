@@ -11512,7 +11512,7 @@ GameObject:
   - component: {fileID: 1374496002}
   - component: {fileID: 1374496001}
   - component: {fileID: 1374496000}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DissolvingNoiseTransition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13743,7 +13743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickableLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 59
   CameraPos: {fileID: 0}
 --- !u!195 &1613207904
 NavMeshAgent:
