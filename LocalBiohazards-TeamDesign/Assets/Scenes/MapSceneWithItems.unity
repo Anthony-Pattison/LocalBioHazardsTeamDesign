@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 206319528}
   - component: {fileID: 206319532}
   - component: {fileID: 206319531}
+  - component: {fileID: 206319533}
   m_Layer: 5
   m_Name: CrowBarBackground
   m_TagString: Item
@@ -1229,6 +1230,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 206319527}
   m_CullTransparentMesh: 1
+--- !u!114 &206319533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206319527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3108a064259def4d8fc0e6ebfd76669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  ItemIcon: {fileID: 0}
 --- !u!1 &208804104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,6 +2608,7 @@ GameObject:
   - component: {fileID: 405414037}
   - component: {fileID: 405414041}
   - component: {fileID: 405414040}
+  - component: {fileID: 405414042}
   m_Layer: 5
   m_Name: BaseBallBatBackground
   m_TagString: Item
@@ -2659,6 +2675,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405414036}
   m_CullTransparentMesh: 1
+--- !u!114 &405414042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405414036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3108a064259def4d8fc0e6ebfd76669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  ItemIcon: {fileID: 0}
 --- !u!1 &408386028
 GameObject:
   m_ObjectHideFlags: 0
@@ -14496,6 +14526,7 @@ MonoBehaviour:
   clickableLayers:
     serializedVersion: 2
     m_Bits: 59
+  clickEffect: {fileID: 0}
   CameraPos: {fileID: 0}
 --- !u!195 &1613207904
 NavMeshAgent:
@@ -14848,6 +14879,7 @@ GameObject:
   - component: {fileID: 1661545616}
   - component: {fileID: 1661545620}
   - component: {fileID: 1661545619}
+  - component: {fileID: 1661545621}
   m_Layer: 5
   m_Name: RopeBackground
   m_TagString: Item
@@ -14914,6 +14946,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1661545615}
   m_CullTransparentMesh: 1
+--- !u!114 &1661545621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661545615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3108a064259def4d8fc0e6ebfd76669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  ItemIcon: {fileID: 0}
 --- !u!1 &1695747356
 GameObject:
   m_ObjectHideFlags: 0
