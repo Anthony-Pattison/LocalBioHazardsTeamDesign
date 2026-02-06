@@ -17,7 +17,7 @@ public class EventCore : MonoBehaviour
 
     [HideInInspector]
     //an outcome to processing an object: event for adding an item to an object
-    public UnityEvent<string> addToInventoryEV;
+    public UnityEvent<Items> addToInventoryEV;
 
     [HideInInspector]
     //follows the addToInventory EV; event for updating the inventory display since the item list has changed
@@ -33,6 +33,10 @@ public class EventCore : MonoBehaviour
     [HideInInspector]
     //event for finishing a transition, which unfreezes input and ai
     public UnityEvent finishTransitionEV;
+
+    [HideInInspector]
+    //event for the player droping a trap on the ground
+    public UnityEvent dropingTrapEV;
 
     //for testing purposes in order to invoke the event through pressing a button
     public void InvokeProcessObjectEV(GameObject gameObj)

@@ -39,14 +39,20 @@ public class ObjectProcesser : MonoBehaviour
 
         if (obj.addToInventory)
         {
-            eventCore.addToInventoryEV.Invoke(interactedObject.name);
+            eventCore.addToInventoryEV.Invoke(obj.item);
         }
 
         if (obj.transportPlayer)
         {
            //does the transition first
            //might add functionality for it to be optional later on and for multiple types
-            eventCore.startScreenTransitionEV.Invoke("fadeToBlack");
+            eventCore.startScreenTransitionEV.Invoke("dissolvingNoise");
+        }
+
+        //this outcome must always be last
+        if (obj.destroyOnInteraction)
+        {
+            Destroy(interactedObject);
         }
     }
 
@@ -107,10 +113,10 @@ public class ObjectProcesser : MonoBehaviour
         {
             string condition = list[i];
 
-            foreach (string item in inventory.itemList)
+            foreach (Items item in inventory.itemList)
             {
                 //if the inventory has the item, update the passedConditions list to reflect this
-                if (item.Equals(condition))
+                if (item.ItemName == condition)
                 {
                     passedConditions[i] = true;
                     break;
