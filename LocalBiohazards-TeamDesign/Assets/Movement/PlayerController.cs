@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
     void ClickToMove()
     {
         MousePosition = Input.mousePosition;
-        print($"{Screen.width / 2} {MousePosition}");
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))
