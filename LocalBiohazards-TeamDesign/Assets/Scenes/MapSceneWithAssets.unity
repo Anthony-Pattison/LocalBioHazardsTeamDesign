@@ -24870,7 +24870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1576169935020523523, guid: 4bde4705185f7fd4f875f5a00a85de98, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4550558464387517119, guid: 4bde4705185f7fd4f875f5a00a85de98, type: 3}
       propertyPath: m_IsActive
@@ -25007,7 +25007,7 @@ MonoBehaviour:
   LeftDoorPivot: {fileID: 300090988}
   clickableLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
   Open: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
