@@ -28,11 +28,13 @@ public class ItemIconDisplay : MonoBehaviour
     {
         foreach (Items inventory in inventory.itemList)
         {
-            if(inventory == ItemIcon.GetComponent<ItemImageInteraction>().Item)
+            if (PickedUpItem == ItemIcon.GetComponent<ItemImageInteraction>().Item)
             {
                 BackgroundImage.enabled = true;
                 ItemIcon.SetActive(true);
+                return;
             }
+            
         }
     }
   

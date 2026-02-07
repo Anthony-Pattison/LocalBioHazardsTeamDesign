@@ -28,8 +28,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        Vector3 CamPos = CameraPos.position;
         if (CameraPos != null)
-            transform.LookAt(CameraPos.position);
+            transform.LookAt(CamPos);
         GetPlayerInput();
         if (agent.velocity != Vector3.zero)
             KillerAnimator.speed = 1;

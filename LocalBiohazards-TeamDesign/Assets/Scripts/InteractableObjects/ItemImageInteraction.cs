@@ -16,7 +16,6 @@ public class ItemImageInteraction : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         NormalSize = transform.localScale;
         BigSize = transform.localScale + Vector3.one;
         animator = GetComponent<Animator>();

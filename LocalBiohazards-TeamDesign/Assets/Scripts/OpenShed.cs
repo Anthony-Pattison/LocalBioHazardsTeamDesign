@@ -21,7 +21,10 @@ public class OpenShed : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        ClickToOpenDoor();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            ClickToOpenDoor();
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -46,12 +49,18 @@ public class OpenShed : MonoBehaviour
     {
 
         if (Open) {
-            Ropeitem.SetActive(false);
+            if (Ropeitem != null)
+            {
+                Ropeitem.SetActive(false);
+            }
             RightDoorPivot.transform.eulerAngles = RightClosed;
             LeftDoorPivot.transform.eulerAngles = LeftClosed;
             return;
         }
-        Ropeitem.SetActive(true);
+        if (Ropeitem != null)
+        {
+            Ropeitem.SetActive(true);
+        }
         RightDoorPivot.transform.eulerAngles = new Vector3 (0f, -250f, 0f)  * Mathf.Deg2Rad;
         LeftDoorPivot.transform.eulerAngles = new Vector3(0f, -250f, 0f)  * Mathf.Deg2Rad;
     }
