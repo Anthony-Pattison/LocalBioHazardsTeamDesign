@@ -1,7 +1,8 @@
 using NUnit.Framework;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     public List<AudioClip> WalkSounds;
@@ -67,11 +68,26 @@ public class PlayerController : MonoBehaviour
             agent.destination = hit.point;
             if (clickEffect != null)
             {
-                Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+                ParticleSystem _partical = Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+                StartCoroutine(DestroyWayPoint(_partical.gameObject, 1.5f));
             }
         }
     }
-
+    /// <summary>
+    /// For destorying the partical effects after they are done waiting and <br/>
+    /// shrink and can't be seen.
+    /// </summary>
+    /// <param name="Partical"></param>
+    /// <param name="SecondsToWait"></param>
+    /// <returns></returns>
+    IEnumerator DestroyWayPoint(GameObject Partical, float SecondsToWait)
+    {
+        print("waiting");
+        yield return new WaitForSeconds(SecondsToWait);
+        print("Done waiting die");
+        Destroy(Partical);
+        yield break;
+    }
     public void PlaySound()
     {
         AudioClip ac = WalkSounds[Random.Range(0, WalkSounds.Count - 1)];
