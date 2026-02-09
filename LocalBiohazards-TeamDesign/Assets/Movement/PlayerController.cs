@@ -28,8 +28,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        Vector3 CamPos = CameraPos.position;
         if (CameraPos != null)
-            transform.LookAt(CameraPos.position);
+            transform.LookAt(CamPos);
         GetPlayerInput();
         if (agent.velocity != Vector3.zero)
             KillerAnimator.speed = 1;
@@ -59,7 +60,6 @@ public class PlayerController : MonoBehaviour
     void ClickToMove()
     {
         MousePosition = Input.mousePosition;
-        print($"{Screen.width / 2} {MousePosition}");
         RaycastHit hit;
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))

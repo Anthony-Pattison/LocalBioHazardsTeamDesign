@@ -15,7 +15,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
-        PlayerTransform = GameObject.Find("{Player").transform;
+        PlayerTransform = GameObject.Find("Player").transform;
         eventCore.dropingTrapEV.AddListener(DropItem);
         eventCore.addToInventoryEV.AddListener(AddToInventory);
         AddToInventory(Knife);
