@@ -82,9 +82,7 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     IEnumerator DestroyWayPoint(GameObject Partical, float SecondsToWait)
     {
-        print("waiting");
         yield return new WaitForSeconds(SecondsToWait);
-        print("Done waiting die");
         Destroy(Partical);
         yield break;
     }

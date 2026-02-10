@@ -17,12 +17,12 @@ public class CameraChangeTrigger : MonoBehaviour
         {
             if (!passed)
             {
-                CamHolder.transform.position = CamEnterPos.transform.position; 
-                passed = true; 
+                CamHolder.transform.position = CamEnterPos.transform.position;
+                passed = true;
                 return;
+
             }
-            CamHolder.transform.position = CamExitPos.transform.position;
-            passed = false;
+
         }
     }
 }
