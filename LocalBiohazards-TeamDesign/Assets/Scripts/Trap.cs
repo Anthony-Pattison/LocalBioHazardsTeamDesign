@@ -1,7 +1,6 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Killing : MonoBehaviour
+public class Trap : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -13,13 +12,5 @@ public class Killing : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Trap")
-        {
-
-        }
     }
 }
