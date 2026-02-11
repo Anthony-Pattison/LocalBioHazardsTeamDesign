@@ -15,14 +15,8 @@ public class CameraChangeTrigger : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (!passed)
-            {
-                CamHolder.transform.position = CamEnterPos.transform.position;
-                passed = true;
-                return;
-
-            }
-
+            CamHolder.transform.position = CamEnterPos.transform.position;
+            passed = true;
         }
     }
 }
