@@ -47,7 +47,7 @@ public class Inventory : MonoBehaviour
         // removing from the list
         if (_TrapToUse != null)
         {
-            Instantiate(TrapObject, PlayerTransform.position, Quaternion.identity);
+            Instantiate(TrapObject, PlayerTransform.position, PlayerTransform.rotation);
             itemList.Remove(_TrapToUse);
             eventCore.updateInventoryDisplayEV.Invoke();
             return;
