@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Rope
   ItemImage: {fileID: 21300000, guid: 824bb825e1f065e45b7a16ce5cff7eb1, type: 3}
-  HoveAnimation: {fileID: 0}
   IsKeyItem: 1
   IsTrapItem: 0
-  ItemDiscription: 'A rope that was found in the garage.
+  ItemDiscription: 'A rope that was found in the shed.
 
     Key Item.'

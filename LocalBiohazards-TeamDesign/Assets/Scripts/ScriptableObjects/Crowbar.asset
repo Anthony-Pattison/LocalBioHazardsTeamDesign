@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Crowbar
   ItemImage: {fileID: 21300000, guid: 03030a5899fc56740a1b265676bbf8ba, type: 3}
-  HoveAnimation: {fileID: 0}
   IsKeyItem: 1
   IsTrapItem: 0
-  ItemDiscription: 'A crowbar found in the shed.
+  ItemDiscription: 'A crowbar found outside the door of the house.
 
     Key Item.'
