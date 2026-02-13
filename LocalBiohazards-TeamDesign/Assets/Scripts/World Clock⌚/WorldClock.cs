@@ -38,6 +38,8 @@ public class WorldClock : MonoBehaviour
             Debug.Log($"{this.gameObject.name} Could not find event core, destroying {this.name}");
             Destroy(this);
         }
+        ChangeTime(1, MinuteIncrementAmount, TimeCheck.CheckMinute);
+        ChangeTime(0, MinuteIncrementAmount, TimeCheck.CheckHour);
     }
 
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class WorldClock : MonoBehaviour
         {
             WorldTimeHours += HourChange;
 
-            if (WorldTimeHours >= 25)
+            if (WorldTimeHours >= 23)
             {
                 WorldTimeHours = 0;
             }
@@ -71,12 +73,12 @@ public class WorldClock : MonoBehaviour
         {
             WorldTimeMinutes += MinuteChange;
 
-            if (WorldTimeMinutes >= 61)
+            if (WorldTimeMinutes >= 59)
             {
                 WorldTimeMinutes = 0;
                 WorldTimeHours++;
                 eventCore.TurnOfTheHour.Invoke(WorldTimeHours);
-            }else if (WorldTimeHours >= 25)
+            }else if (WorldTimeHours >= 23)
             {
                 WorldTimeHours = 0;
             }
