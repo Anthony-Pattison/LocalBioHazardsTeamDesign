@@ -41,9 +41,15 @@ public class EventCore : MonoBehaviour
     [HideInInspector]
     //event that gets gets called at a set time (In world clock game object)
     public UnityEvent<float> TurnOfTheHour;
+
     [HideInInspector]
     //event that gets gets called at a set time (In world clock game object)
     public UnityEvent<float> TurnOfTheMinute;
+
+    [HideInInspector]
+    //event that updates the parallax scrolling value. usually used when swapping camera position (pressing camera triggers)
+    public UnityEvent updateParallaxScrollingEV;
+
     //for testing purposes in order to invoke the event through pressing a button
     public void InvokeProcessObjectEV(GameObject gameObj)
     {
