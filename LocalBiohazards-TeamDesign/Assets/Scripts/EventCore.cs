@@ -38,6 +38,12 @@ public class EventCore : MonoBehaviour
     //event for the player droping a trap on the ground
     public UnityEvent dropingTrapEV;
 
+    [HideInInspector]
+    //event that gets gets called at a set time (In world clock game object)
+    public UnityEvent<float> TurnOfTheHour;
+    [HideInInspector]
+    //event that gets gets called at a set time (In world clock game object)
+    public UnityEvent<float> TurnOfTheMinute;
     //for testing purposes in order to invoke the event through pressing a button
     public void InvokeProcessObjectEV(GameObject gameObj)
     {

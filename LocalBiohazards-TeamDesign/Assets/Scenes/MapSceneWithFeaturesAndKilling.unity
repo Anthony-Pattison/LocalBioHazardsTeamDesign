@@ -9302,6 +9302,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 797822388748347005, guid: d19f004d12da7cd468fd2aad123b6c44, type: 3}
+      propertyPath: TurnOfTheHour.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 797822388748347005, guid: d19f004d12da7cd468fd2aad123b6c44, type: 3}
+      propertyPath: TurnOfTheHour.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4624872653946265691, guid: d19f004d12da7cd468fd2aad123b6c44, type: 3}
       propertyPath: m_Name
       value: EventCore
@@ -17911,6 +17919,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5759654579970349139, guid: 914466b0f392c0a43abf357d02f15576, type: 3}
   m_PrefabInstance: {fileID: 1411181811}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1412198274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1412198276}
+  - component: {fileID: 1412198275}
+  m_Layer: 0
+  m_Name: WorldClock
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1412198275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412198274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62394fe043a7a3c4c9eeb11b721c5d05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldTimeMinutes: 30
+  WorldTimeHours: 17
+  TimeIncrementAmount: 10
+  TimeTillIncrementInSeconds: 10
+  timeCheck: 0
+--- !u!4 &1412198276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412198274}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1412211155
 GameObject:
   m_ObjectHideFlags: 0
@@ -26501,13 +26558,15 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1835339423}
+  - {fileID: 727424843}
+  - {fileID: 367192814}
+  - {fileID: 1412198276}
+  - {fileID: 1388643739}
   - {fileID: 1695747359}
   - {fileID: 477004903}
   - {fileID: 685336589}
   - {fileID: 1459136661}
   - {fileID: 1471082303}
-  - {fileID: 727424843}
-  - {fileID: 367192814}
   - {fileID: 1307737678}
   - {fileID: 1514964639}
   - {fileID: 201061007}
@@ -26515,7 +26574,6 @@ SceneRoots:
   - {fileID: 692642215}
   - {fileID: 16376165449950129}
   - {fileID: 1578351352}
-  - {fileID: 1388643739}
   - {fileID: 32094329}
   - {fileID: 746838390}
   - {fileID: 957190303}
