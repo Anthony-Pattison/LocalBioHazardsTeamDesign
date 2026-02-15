@@ -35,7 +35,7 @@ public class WorldClock : MonoBehaviour
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         if(eventCore == null)
         {
-            Debug.Log($"{this.gameObject.name} Could not find event core, destroying {this.name}");
+            Debug.LogWarning($"{this.gameObject.name} Could not find event core, destroying {this.name}");
             Destroy(this);
         }
         ChangeTime(1, MinuteIncrementAmount, TimeCheck.CheckMinute);
