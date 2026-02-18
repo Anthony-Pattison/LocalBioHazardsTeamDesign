@@ -32,7 +32,7 @@ public class ParallaxScrolling : MonoBehaviour
     void Update()
     {
         Vector3 cameraDelta = mainCamera.transform.eulerAngles - cameraInitialRotation;
-        print($"{mainCamera.transform.eulerAngles} - {cameraInitialRotation} = {cameraDelta}");
+        //print($"{mainCamera.transform.eulerAngles} - {cameraInitialRotation} = {cameraDelta}");
 
         float layerDeltaX = cameraDelta.y * scrollRate;
         float layerDeltaY = cameraDelta.x * scrollRate;
