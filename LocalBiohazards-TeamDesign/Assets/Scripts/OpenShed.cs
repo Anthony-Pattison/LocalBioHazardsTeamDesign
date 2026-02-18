@@ -27,8 +27,12 @@ public class OpenShed : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        openDoors();
-        Open = false;
+        if (Open)
+        {
+            openDoors();
+            Open = false;
+        }
+
     }
     void ClickToOpenDoor()
     {
@@ -37,10 +41,11 @@ public class OpenShed : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers) && !Open)
         {
-            if (Input.GetMouseButtonDown(1) && hit.collider.gameObject == Shed)
+            if (Input.GetMouseButton(1) && hit.collider.gameObject == Shed)
             {
                 openDoors();
                 Open = true;
+
             }
         }
     }
