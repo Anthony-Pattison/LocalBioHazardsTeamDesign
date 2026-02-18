@@ -22447,7 +22447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1058816922}
   menu: {fileID: 544908138}
-  OpenAmount: 400
+  OpenAmount: 700
   Toggle: 1
 --- !u!95 &1319232461
 Animator:
