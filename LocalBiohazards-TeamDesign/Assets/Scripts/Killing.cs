@@ -13,7 +13,13 @@ public class Killing : MonoBehaviour
     {
         
     }
-
+    [System.Serializable]
+    public struct KillEventData
+    {
+        public string victim;
+        public Vector3 victimPosition;
+        public Vector3 playerPosition;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -21,6 +27,15 @@ public class Killing : MonoBehaviour
         {
             Debug.Log("Killed Enemy");
         }
+
+        var data = new KillEventData()
+        {
+            victim = name,
+            victimPosition = transform.position,
+            playerPosition = transform.position
+        };
+
+        TelemetryLogger.Log(this, "Killed", data);
     }
 
     private void OnTriggerEnter(Collider other)
