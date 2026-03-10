@@ -2412,7 +2412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5218311481730121758, guid: 8cc9a71f0b08514468e50e2cc57c4fc0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.7
+      value: 29.04
       objectReference: {fileID: 0}
     - target: {fileID: 5218311481730121758, guid: 8cc9a71f0b08514468e50e2cc57c4fc0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21360,8 +21360,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1514964639}
   - component: {fileID: 1514964638}
+  - component: {fileID: 1514964640}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: PlayerDropShadowCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21437,6 +21438,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
+--- !u!114 &1514964640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514964637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecf7a2640f866d43a53c4e1e6f89cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Offset: {x: 0, y: -2.3, z: 0}
 --- !u!1 &1519563501
 GameObject:
   m_ObjectHideFlags: 0

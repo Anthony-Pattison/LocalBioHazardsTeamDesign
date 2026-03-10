@@ -27,6 +27,8 @@ public class ScreenTransitioner : MonoBehaviour
 
     void DetermineTransition(string transitionType)
     {
+        print($"doing transition: {transitionType}");
+
         if (transitionType == "fadeToBlack")
         {
             StartCoroutine(FadeToBlackTransition());

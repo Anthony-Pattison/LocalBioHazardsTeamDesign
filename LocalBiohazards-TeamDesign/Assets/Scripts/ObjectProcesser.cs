@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ObjectProcesser : MonoBehaviour
 {
@@ -44,7 +45,8 @@ public class ObjectProcesser : MonoBehaviour
 
         if (obj.transportPlayer)
         {
-           //does the transition first
+            print("transport the player");
+            //does the transition first
            //might add functionality for it to be optional later on and for multiple types
             eventCore.startScreenTransitionEV.Invoke("dissolvingNoise");
         }
@@ -59,9 +61,10 @@ public class ObjectProcesser : MonoBehaviour
     void TeleportPlayer()
     {
         //just moves the camera as the player rn
-        //obviously this will change once we get the player and we'll just transport it
-        GameObject player = GameObject.Find("Main Camera");
-        player.transform.position = obj.transportPlayerCoords;
+
+        GameObject player = GameObject.Find("Player");
+        player.GetComponent<NavMeshAgent>().Warp(obj.transportPlayerCoords);
+        //player.transform.position = obj.transportPlayerCoords;
     }
 
     //checks whether all the conditions are fulfilled in the obj

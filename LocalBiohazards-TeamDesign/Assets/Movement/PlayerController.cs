@@ -30,8 +30,13 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector3 CamPos = CameraPos.position;
-        if (CameraPos != null)
+        if (CameraPos != null) {
+            CamPos.y = transform.position.y;
             transform.LookAt(CamPos);
+            print($" Player rotation {transform.eulerAngles}, wanted rotation {CamPos}");
+
+        }
+
         GetPlayerInput();
         if (agent.velocity != Vector3.zero)
             KillerAnimator.speed = 1;
@@ -89,7 +94,8 @@ public class PlayerController : MonoBehaviour
     public void PlaySound()
     {
         AudioClip ac = WalkSounds[Random.Range(0, WalkSounds.Count - 1)];
-        if (audiomanager != null) {
+        if (audiomanager != null)
+        {
             audiomanager.PlayOneShot(ac);
             return;
         }
