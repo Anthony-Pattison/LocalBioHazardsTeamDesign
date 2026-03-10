@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         if (CameraPos != null) {
             CamPos.y = transform.position.y;
             transform.LookAt(CamPos);
-            print($" Player rotation {transform.eulerAngles}, wanted rotation {CamPos}");
+            //print($" Player rotation {transform.eulerAngles}, wanted rotation {CamPos}");
 
         }
 

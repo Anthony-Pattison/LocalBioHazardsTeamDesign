@@ -8194,6 +8194,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 477004903}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &479513284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 479513286}
+  - component: {fileID: 479513285}
+  m_Layer: 0
+  m_Name: Telemetry
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &479513285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479513284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 286038c7bf69e8046b2933b67bf376bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Settings>k__BackingField: {fileID: 11400000, guid: d9b6f3f7b7d94bf44b16b359965322ec, type: 2}
+  _section: MapSceneWithFeaturesAndKilling
+  OnConnectionSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  OnConnectionFail:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &479513286
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479513284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.333591, y: -49.553, z: 6.9598584}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &485829690
 GameObject:
   m_ObjectHideFlags: 0
@@ -15793,7 +15845,7 @@ GameObject:
   - component: {fileID: 970038143}
   - component: {fileID: 970038147}
   m_Layer: 0
-  m_Name: DoorWay (2)
+  m_Name: Side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21420,7 +21472,7 @@ GameObject:
   - component: {fileID: 1265674537}
   - component: {fileID: 1265674536}
   m_Layer: 0
-  m_Name: DoorWay (3)
+  m_Name: Shed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24057,7 +24109,7 @@ GameObject:
   - component: {fileID: 1405953802}
   - component: {fileID: 1405953801}
   m_Layer: 0
-  m_Name: DoorWay (1)
+  m_Name: MainEntrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36759,3 +36811,4 @@ SceneRoots:
   - {fileID: 337964368}
   - {fileID: 1756916381}
   - {fileID: 1683515046}
+  - {fileID: 479513286}

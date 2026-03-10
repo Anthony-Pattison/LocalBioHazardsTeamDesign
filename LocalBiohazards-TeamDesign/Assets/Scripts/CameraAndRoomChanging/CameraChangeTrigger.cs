@@ -21,6 +21,10 @@ public class CameraChangeTrigger : MonoBehaviour
             eventCore.updateParallaxScrollingEV.Invoke();
             CamHolder.transform.position = CamEnterPos.transform.position;
             passed = true;
+
+            TelemetryLogger.Log(this, gameObject.name);
+
+
         }
     }
 }
