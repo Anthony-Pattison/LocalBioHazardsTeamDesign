@@ -14,6 +14,14 @@ public class CameraChangeTrigger : MonoBehaviour
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         CamHolder = GameObject.Find("CameraHolder");
     }
+    [System.Serializable]
+    public struct EnterEventData
+    {
+        public string Zone;
+        public Vector3 PlayerPos;
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -22,9 +30,16 @@ public class CameraChangeTrigger : MonoBehaviour
             CamHolder.transform.position = CamEnterPos.transform.position;
             passed = true;
 
-            TelemetryLogger.Log(this, gameObject.name);
+            var data = new EnterEventData()
+            {
+                Zone = name,
+                PlayerPos = other.gameObject.transform.position
+
+            };
+            TelemetryLogger.Log(this, "Entered", data);
 
 
         }
     }
+
 }
