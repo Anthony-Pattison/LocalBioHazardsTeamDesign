@@ -16,6 +16,6 @@ MonoBehaviour:
   secret: 991773291
   _version: crash fix
   _serverURL: https://dd-telemetry-odd-e1dd6794cd3d.herokuapp.com/
-  serverCommunication: 1
+  serverCommunication: 2
   debugLogging: 0
   <SetupId>k__BackingField: LocalBiohazards-TeamDesign @ 154065384
