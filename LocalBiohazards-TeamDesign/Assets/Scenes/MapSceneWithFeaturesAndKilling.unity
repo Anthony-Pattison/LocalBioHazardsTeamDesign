@@ -4862,7 +4862,7 @@ Transform:
   m_GameObject: {fileID: 298054822}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -30383,6 +30383,7 @@ GameObject:
   - component: {fileID: 1683515047}
   - component: {fileID: 1683515049}
   - component: {fileID: 1683515048}
+  - component: {fileID: 1683515050}
   m_Layer: 0
   m_Name: Timmy
   m_TagString: Untagged
@@ -30441,9 +30442,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: ParadoxNotion::NodeCanvas.Framework.Blackboard
   _parentBlackboard: {fileID: 0}
-  _serializedBlackboard: '{"_variables":{}}'
-  _objectReferences: []
-  _serializedVariables: []
+  _serializedBlackboard: '{"_variables":{"Timmy":{"_value":1,"_name":"Timmy","_id":"c5872801-0da9-4900-a4af-02afe7221054","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+    UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"},"timmyNavAgent":{"_value":2,"_name":"timmyNavAgent","_id":"9db96f71-cbbc-4461-a50b-08343c9dcfe1","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.AI.NavMeshAgent,
+    UnityEngine.AIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 1683515045}
+  - {fileID: 1683515047}
+  _serializedVariables:
+  - _json: '{"_value":1,"_name":"Timmy","_id":"c5872801-0da9-4900-a4af-02afe7221054","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.GameObject,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1683515045}
+  - _json: '{"_value":1,"_name":"timmyNavAgent","_id":"9db96f71-cbbc-4461-a50b-08343c9dcfe1","$type":"NodeCanvas.Framework.Variable`1[[UnityEngine.AI.NavMeshAgent,
+      UnityEngine.AIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]"}'
+    _references:
+    - {fileID: 0}
+    - {fileID: 1683515047}
 --- !u!114 &1683515049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30457,10 +30473,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: NodeCanvas::NodeCanvas.StateMachines.FSMOwner
   _serializedExposedParameters: []
-  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"locations":{"aiLocations":[{"Name":"TimmysRoom","locationTransform":1}]},"$type":"NodeCanvas.Tasks.Actions.changeRoomAT"}]},"_color":{"r":0.02130976,"g":0.6037736,"a":1.0},"_name":"MoveTo","_position":{"x":663.0,"y":315.0},"$type":"NodeCanvas.StateMachines.ActionState"}],"connections":[],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
+  _boundGraphSerialization: '{"type":"NodeCanvas.StateMachines.FSM","nodes":[{"_actionList":{"executionMode":1,"actions":[{"locations":{"aiLocations":[{"locationTransform":1}]},"navAgentBBP":{"_name":"timmyNavAgent","_targetVariableID":"9db96f71-cbbc-4461-a50b-08343c9dcfe1"},"$type":"NodeCanvas.Tasks.Actions.changeRoomAT"}]},"_color":{"r":0.02130976,"g":0.6037736,"a":1.0},"_name":"MoveTo","_position":{"x":562.0,"y":316.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"0"},{"_actionList":{"executionMode":1,"actions":[{"navAgent":{"_name":"timmyNavAgent","_targetVariableID":"9db96f71-cbbc-4461-a50b-08343c9dcfe1"},"randomDistance":3.0,"wonderSpotTransform":1,"$type":"NodeCanvas.Tasks.Actions.wonderAroundRoomAT"}]},"_color":{"r":1.0,"g":0.42,"b":0.32,"a":1.0},"_position":{"x":772.0,"y":529.0},"$type":"NodeCanvas.StateMachines.ActionState","$id":"1"}],"connections":[{"_sourceNode":{"$ref":"0"},"_targetNode":{"$ref":"1"},"$type":"NodeCanvas.StateMachines.FSMConnection"}],"canvasGroups":[],"localBlackboard":{"_variables":{}}}'
   _boundGraphObjectReferences:
   - {fileID: 0}
-  - {fileID: 930533414}
+  - {fileID: 1691594490}
   _boundGraphSource:
     _version: 3.41
     _category: 
@@ -30475,6 +30491,19 @@ MonoBehaviour:
   _updateMode: 0
   _graph: {fileID: 0}
   _blackboard: {fileID: 1683515048}
+--- !u!114 &1683515050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683515045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624cb465809af3e47a8fe97c34f0268c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::victimFSMClass
+  currentLocation: 1
 --- !u!1 &1691594489
 GameObject:
   m_ObjectHideFlags: 0
@@ -31940,6 +31969,7 @@ GameObject:
   - component: {fileID: 1756916382}
   - component: {fileID: 1756916384}
   - component: {fileID: 1756916383}
+  - component: {fileID: 1756916385}
   m_Layer: 0
   m_Name: Steven
   m_TagString: Untagged
@@ -32030,6 +32060,19 @@ MonoBehaviour:
   _updateMode: 0
   _graph: {fileID: 0}
   _blackboard: {fileID: 1756916383}
+--- !u!114 &1756916385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756916380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 624cb465809af3e47a8fe97c34f0268c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::victimFSMClass
+  currentLocation: 0
 --- !u!1 &1764450019
 GameObject:
   m_ObjectHideFlags: 0
