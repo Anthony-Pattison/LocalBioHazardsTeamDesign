@@ -54,7 +54,6 @@ public class OpeningClockMenu : MonoBehaviour
 
         for (int i = 0; i < raycastHit.Count; i++)
         {
-            print(raycastHit[i].gameObject.name);
             if (raycastHit[i].gameObject == this.gameObject)
             {
                 return true;
