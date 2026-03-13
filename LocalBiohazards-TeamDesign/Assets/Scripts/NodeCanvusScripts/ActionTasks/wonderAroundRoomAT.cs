@@ -13,10 +13,10 @@ namespace NodeCanvas.Tasks.Actions {
 		Vector3 wonderSpot;
 		Vector3 Destination;
 		public BBParameter<Transform> wonderSpotTransformBBP;
-
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
+        public BBParameter<float> stoppingDistanceBBP = 2;
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit() {
 			return null;
 		}
 
@@ -34,7 +34,7 @@ namespace NodeCanvas.Tasks.Actions {
 			float distanceToDestination = Vector3.Distance(agent.transform.position, Destination);
 			Debug.DrawLine(agent.transform.position, Destination, Color.red);
             Debug.Log(distanceToDestination);
-			if ( distanceToDestination < 2.0f)
+			if ( distanceToDestination < stoppingDistanceBBP.value)
 			{
 				setNewDestination();
             }

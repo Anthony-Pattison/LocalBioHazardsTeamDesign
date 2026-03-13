@@ -12,6 +12,7 @@ namespace NodeCanvas.Tasks.Actions {
 		public BBParameter<NavMeshAgent> navAgentBBP;
 		public currentLocation goToLocation;
 		public BBParameter<Transform> locationToMoveToBBP;
+		public BBParameter<float> stoppingDistanceBBP = 2;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
@@ -38,7 +39,7 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnUpdate() {
             Debug.Log(Vector3.Distance(agent.transform.position, locationToMoveToBBP.value.position));
 
-            if (Vector3.Distance(agent.transform.position, locationToMoveToBBP.value.position) < 2)
+            if (Vector3.Distance(agent.transform.position, locationToMoveToBBP.value.position) < stoppingDistanceBBP.value)
 			{
 				EndAction();
 			}
