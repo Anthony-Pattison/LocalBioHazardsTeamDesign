@@ -10,6 +10,8 @@ namespace NodeCanvas.Tasks.Actions {
 
 		public locationClass locations;
 		public BBParameter<NavMeshAgent> navAgentBBP;
+		public currentLocation goToLocation;
+		public BBParameter<Transform> locationToMoveToBBP;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
@@ -20,14 +22,24 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			navAgentBBP.value.SetDestination(locations.aiLocations[0].locationTransform.position);
+			for (int i = 0; i < locations.aiLocations.Length; i++) {
+
+				if (locations.aiLocations[i].location == goToLocation)
+				{
+                    locationToMoveToBBP.value = locations.aiLocations[i].locationTransform;
+
+                    navAgentBBP.value.SetDestination(locationToMoveToBBP.value.position);
+					break;
+				}
+			}
 		}
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-            if (Vector3.Distance(agent.transform.position, locations.aiLocations[0].locationTransform.position) < 1)
+            Debug.Log(Vector3.Distance(agent.transform.position, locationToMoveToBBP.value.position));
+
+            if (Vector3.Distance(agent.transform.position, locationToMoveToBBP.value.position) < 2)
 			{
-				Debug.Log("made it to the position");
 				EndAction();
 			}
 		}

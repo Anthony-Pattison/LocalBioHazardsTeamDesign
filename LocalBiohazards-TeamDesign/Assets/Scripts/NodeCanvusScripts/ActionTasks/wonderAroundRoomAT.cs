@@ -12,7 +12,7 @@ namespace NodeCanvas.Tasks.Actions {
 		public float randomDistance;
 		Vector3 wonderSpot;
 		Vector3 Destination;
-		public Transform wonderSpotTransform;
+		public BBParameter<Transform> wonderSpotTransformBBP;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -25,7 +25,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
 
-			wonderSpot = wonderSpotTransform.position;
+			wonderSpot = wonderSpotTransformBBP.value.position;
 			setNewDestination();
 		}
 
@@ -42,7 +42,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 		void setNewDestination()
 		{
-			Vector3 Temp = randomDistance * Random.insideUnitSphere + wonderSpotTransform.position;
+			Vector3 Temp = randomDistance * Random.insideUnitSphere + wonderSpotTransformBBP.value.position;
 			NavMeshHit hit = new NavMeshHit();
 			if (!NavMesh.SamplePosition(Temp, out hit, randomDistance, NavMesh.AllAreas))
 			{
