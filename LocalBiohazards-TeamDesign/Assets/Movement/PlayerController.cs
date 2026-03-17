@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))
         {
             agent.destination = hit.point;
+            TelemetryLogger.Log(this, $"Click position: {hit.point}");
+
             if (clickEffect != null)
             {
                 ParticleSystem _partical = Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);

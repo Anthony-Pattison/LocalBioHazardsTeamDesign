@@ -8738,13 +8738,14 @@ GameObject:
   m_Component:
   - component: {fileID: 479513286}
   - component: {fileID: 479513285}
+  - component: {fileID: 479513287}
   m_Layer: 0
   m_Name: Telemetry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &479513285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8752,13 +8753,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479513284}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 286038c7bf69e8046b2933b67bf376bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Settings>k__BackingField: {fileID: 11400000, guid: d9b6f3f7b7d94bf44b16b359965322ec, type: 2}
-  _section: MapSceneWithFeaturesAndKilling
+  _section: GameScene
   OnConnectionSuccess:
     m_PersistentCalls:
       m_Calls:
@@ -8804,6 +8805,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479513287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479513284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ce9be8350914f43a46d196d61bc3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugTimer
+  timer: 0
 --- !u!1 &485829690
 GameObject:
   m_ObjectHideFlags: 0
@@ -39439,7 +39453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4992790845586483610, guid: 4bde4705185f7fd4f875f5a00a85de98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3
+      value: 0.768
       objectReference: {fileID: 0}
     - target: {fileID: 4992790845586483610, guid: 4bde4705185f7fd4f875f5a00a85de98, type: 3}
       propertyPath: m_LocalPosition.z

@@ -9,7 +9,15 @@ public class ObjectProcesser : MonoBehaviour
     FlagCore flagCore;
 
     Object obj;
-    
+
+    //this is a struct that holds some data of the object the player interacts with
+    [System.Serializable]
+    public struct ObjectData
+    {
+        public string name;
+        public Vector3 objPosition;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,6 +33,13 @@ public class ObjectProcesser : MonoBehaviour
     {
         print($"processing object: {interactedObject.name}");
         obj = interactedObject.GetComponent<Object>();
+
+        //a new ObjectData is made for the purpose of logging
+        ObjectData telemetryData = new ObjectData();
+
+        //the telemetry data is updated accordingly to the interacted object such as name and their position
+        telemetryData.name = interactedObject.name;
+        telemetryData.objPosition = interactedObject.transform.position;
 
         bool passedCondition = ConditionCheck(obj);
         if (!passedCondition)
@@ -50,6 +65,9 @@ public class ObjectProcesser : MonoBehaviour
            //might add functionality for it to be optional later on and for multiple types
             eventCore.startScreenTransitionEV.Invoke("dissolvingNoise");
         }
+
+        //the data is then logged under the event "Object Interaction"
+        TelemetryLogger.Log(this, "Object Interaction", telemetryData);
 
         //this outcome must always be last
         if (obj.destroyOnInteraction)
