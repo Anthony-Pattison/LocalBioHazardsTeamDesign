@@ -53,10 +53,8 @@ public class Object : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                print("hovering");
                 if (Input.GetMouseButtonDown(1))
                 {
-                    print("hit");
                     eventCore.processObjectEV.Invoke(this.gameObject);
                 }
             }
