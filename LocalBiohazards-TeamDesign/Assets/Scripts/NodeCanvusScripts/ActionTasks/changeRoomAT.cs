@@ -5,59 +5,74 @@ using UnityEngine;
 using ParadoxNotion.Serialization.FullSerializer;
 using System;
 
-namespace NodeCanvas.Tasks.Actions {
+namespace NodeCanvas.Tasks.Actions
+{
 
-	public class changeRoomAT : ActionTask {
+    public class changeRoomAT : ActionTask
+    {
 
-		public locationClass locations;
-		public BBParameter<NavMeshAgent> navAgentBBP;
-		public currentLocation goToLocation;
-		public BBParameter<Transform> locationToMoveToBBP;
-		public BBParameter<float> stoppingDistanceBBP = 2;
-		//Use for initialization. This is called only once in the lifetime of the task.
-		//Return null if init was successfull. Return an error string otherwise
-		protected override string OnInit() {
-			return null;
-		}
+        public locationClass locations;
+        public BBParameter<NavMeshAgent> navAgentBBP;
+        public currentLocation[] loactionsToCycleThrough;
+        public currentLocation goToLocation;
+        public BBParameter<Transform> locationToMoveToBBP;
+        public BBParameter<float> stoppingDistanceBBP = 2;
 
-		//This is called once each time the task is enabled.
-		//Call EndAction() to mark the action as finished, either in success or failure.
-		//EndAction can be called from anywhere.
-		protected override void OnExecute() {
-			for (int i = 0; i < locations.aiLocations.Length; i++) {
+        int roomNumber;
+        //Use for initialization. This is called only once in the lifetime of the task.
+        //Return null if init was successfull. Return an error string otherwise
+        protected override string OnInit()
+        {
+            return null;
+        }
 
-				if (locations.aiLocations[i].location == goToLocation)
-				{
-                    locationToMoveToBBP.value = locations.aiLocations[i].locationTransform;
+        //This is called once each time the task is enabled.
+        //Call EndAction() to mark the action as finished, either in success or failure.
+        //EndAction can be called from anywhere.
+        protected override void OnExecute()
+        {
+            foreach (var location in locations.aiLocations)
+            {
+                if (location.location == loactionsToCycleThrough[roomNumber])
+                {
+                    locationToMoveToBBP.value = location.locationTransform;
+                    roomNumber++;
+                    if (roomNumber > loactionsToCycleThrough.Length -1)
+                    {
+                        roomNumber = 0;
+                    }
+                    break;
+                }
+            }
 
-                    navAgentBBP.value.SetDestination(locationToMoveToBBP.value.position);
-					agent.GetComponent<victimFSMClass>().currentLocation = goToLocation;
-					break;
-				}
-			}
-		}
+            navAgentBBP.value.SetDestination(locationToMoveToBBP.value.position);
+            agent.GetComponent<victimFSMClass>().currentLocation = goToLocation;
+        }
 
-		//Called once per frame while the action is active.
-		protected override void OnUpdate() {
+        //Called once per frame while the action is active.
+        protected override void OnUpdate()
+        {
 
             if (Vector3.Distance(agent.transform.position, locationToMoveToBBP.value.position) < stoppingDistanceBBP.value)
-			{
-				EndAction();
-			}
-		}
-
-		//Called when the task is disabled.
-		protected override void OnStop() {
-			currentLocation nextLocation = (currentLocation)UnityEngine.Random.RandomRange(0, 7);
-			if (nextLocation == goToLocation)
-			{
-				goToLocation = (currentLocation)3;
+            {
+                EndAction();
             }
         }
 
-		//Called when the task is paused.
-		protected override void OnPause() {
-			
-		}
-	}
+        //Called when the task is disabled.
+        protected override void OnStop()
+        {
+            currentLocation nextLocation = (currentLocation)UnityEngine.Random.RandomRange(0, 7);
+            if (nextLocation == goToLocation)
+            {
+                goToLocation = (currentLocation)3;
+            }
+        }
+
+        //Called when the task is paused.
+        protected override void OnPause()
+        {
+
+        }
+    }
 }
