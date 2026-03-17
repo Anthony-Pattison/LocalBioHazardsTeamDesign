@@ -33,7 +33,6 @@ namespace NodeCanvas.Tasks.Actions {
 		protected override void OnUpdate() {
 			float distanceToDestination = Vector3.Distance(agent.transform.position, Destination);
 			Debug.DrawLine(agent.transform.position, Destination, Color.red);
-            Debug.Log(distanceToDestination);
 			if ( distanceToDestination < stoppingDistanceBBP.value)
 			{
 				setNewDestination();

@@ -5,7 +5,9 @@ using System.Collections.Generic;
 public class Object : MonoBehaviour
 {
     EventCore eventCore;
-    
+    Transform playerTransform;
+    public float stoppingDistacnce = 2.0f;
+    public float playerDistance;
     //things that will happen when this object is interacted with and processed
     [Header("Actions\n------------------")]
     [Header("General")]
@@ -41,23 +43,42 @@ public class Object : MonoBehaviour
     private void Start()
     {
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+        playerTransform = GameObject.Find("Player").transform;
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        if (collision.gameObject.GetComponent<PlayerController>() != null)
+        playerDistance = Vector3.Distance(transform.position, playerTransform.position);
+        if (playerDistance < stoppingDistacnce)
         {
-            print($"player enters: {gameObject.name}");
-            eventCore.reserveObjectEV.Invoke(gameObject);
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                print("hovering");
+                if (Input.GetMouseButtonDown(1))
+                {
+                    print("hit");
+                    eventCore.processObjectEV.Invoke(this.gameObject);
+                }
+            }
         }
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.GetComponent<PlayerController>() != null)
+    //    {
+    //        print($"player enters: {gameObject.name}");
+    //        eventCore.reserveObjectEV.Invoke(gameObject);
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<PlayerController>() != null)
-        {
-            print("player exits");
-            eventCore.unreserveObjectEV.Invoke();
-        }
-    }
+    //    }
+    //}
+
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.GetComponent<PlayerController>() != null)
+    //    {
+    //        print("player exits");
+    //        eventCore.unreserveObjectEV.Invoke();
+
+    //    }
+    //}
 }

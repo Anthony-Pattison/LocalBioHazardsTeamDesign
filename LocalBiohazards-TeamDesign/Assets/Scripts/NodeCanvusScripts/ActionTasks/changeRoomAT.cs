@@ -37,7 +37,6 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called once per frame while the action is active.
 		protected override void OnUpdate() {
-            Debug.Log(Vector3.Distance(agent.transform.position, locationToMoveToBBP.value.position));
 
             if (Vector3.Distance(agent.transform.position, locationToMoveToBBP.value.position) < stoppingDistanceBBP.value)
 			{
