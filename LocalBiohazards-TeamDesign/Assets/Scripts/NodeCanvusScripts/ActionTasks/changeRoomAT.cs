@@ -3,6 +3,7 @@ using ParadoxNotion.Design;
 using UnityEngine.AI;
 using UnityEngine;
 using ParadoxNotion.Serialization.FullSerializer;
+using System;
 
 namespace NodeCanvas.Tasks.Actions {
 
@@ -30,6 +31,7 @@ namespace NodeCanvas.Tasks.Actions {
                     locationToMoveToBBP.value = locations.aiLocations[i].locationTransform;
 
                     navAgentBBP.value.SetDestination(locationToMoveToBBP.value.position);
+					agent.GetComponent<victimFSMClass>().currentLocation = goToLocation;
 					break;
 				}
 			}
@@ -46,8 +48,12 @@ namespace NodeCanvas.Tasks.Actions {
 
 		//Called when the task is disabled.
 		protected override void OnStop() {
-			
-		}
+			currentLocation nextLocation = (currentLocation)UnityEngine.Random.RandomRange(0, 7);
+			if (nextLocation == goToLocation)
+			{
+				goToLocation = (currentLocation)3;
+            }
+        }
 
 		//Called when the task is paused.
 		protected override void OnPause() {
