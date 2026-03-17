@@ -163,7 +163,12 @@ public partial class TelemetryLogger : MonoBehaviour
     public void Log<T>( string eventType, T data) {
         if (_service == null) Initialize();
 
-        var telemetry = new TelemetryEvent<T>(eventType, data);
+        if (GetComponent<DebugTimer>() == null)
+            gameObject.AddComponent<DebugTimer>();
+
+        float timer = GetComponent<DebugTimer>().timer;
+
+        var telemetry = new TelemetryEvent<T>(eventType, timer, data);
         telemetry.section = Section;
         _service.TryLog(this, telemetry);
     }

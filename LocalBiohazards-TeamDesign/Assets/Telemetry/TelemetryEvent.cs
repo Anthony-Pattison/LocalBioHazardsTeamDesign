@@ -20,6 +20,7 @@ public struct TelemetryEvent<T>
     public int sequence;
 
     public long timecode;
+    public float timeInSeconds;
     public DateTimeOffset time {
         get {
             return DateTimeOffset.FromUnixTimeMilliseconds(timecode);
@@ -31,13 +32,14 @@ public struct TelemetryEvent<T>
 
     public T data;
     
-    public TelemetryEvent(string eventType, T data = default) {
+    public TelemetryEvent(string eventType, float deltaTime, T data = default) {
         sessionKey = null;
         section = null;        
         this.eventType = eventType;
         this.data = data;
         sequence = -1;
 
+        timeInSeconds = deltaTime;
         timecode = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
     }
 }

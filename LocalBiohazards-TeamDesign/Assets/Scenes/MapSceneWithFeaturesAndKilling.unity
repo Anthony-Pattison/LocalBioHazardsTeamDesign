@@ -8735,6 +8735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 479513286}
   - component: {fileID: 479513285}
+  - component: {fileID: 479513287}
   m_Layer: 0
   m_Name: Telemetry
   m_TagString: Untagged
@@ -8801,6 +8802,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479513287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479513284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ce9be8350914f43a46d196d61bc3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugTimer
+  timer: 0
 --- !u!1 &485829690
 GameObject:
   m_ObjectHideFlags: 0

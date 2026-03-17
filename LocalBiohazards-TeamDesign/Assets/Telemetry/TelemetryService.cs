@@ -121,7 +121,7 @@ public partial class TelemetryLogger : MonoBehaviour
         public void ProcessSectionChange(TelemetryLogger logger) {
             if (logger.Section == _lastSection) return;
 
-            var telemetry = new TelemetryEvent<string>("ChangeSection", logger.Section)  {
+            var telemetry = new TelemetryEvent<string>("ChangeSection", 0, logger.Section)  {
                 section = _lastSection
             };
             TryLog(logger, telemetry);
