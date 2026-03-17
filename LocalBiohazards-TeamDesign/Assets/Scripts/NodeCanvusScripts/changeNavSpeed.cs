@@ -54,11 +54,13 @@ public class changeNavSpeed : MonoBehaviour
         killed = false;
         displayWepon(false);
         dead = true;
+        TelemetryLogger.Log(this, "NPC Killed", $"NPC Name: {name}, Location: {transform.position}");
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {name}, Location: {transform.position}");
             eventCore.resetGameState.Invoke();
         }
     }

@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class OpeningClockMenu : MonoBehaviour
 {
     public PlayerController playerController;
+    public DiaplayPlayerNotes displayPlayerNotes;
     public GameObject menu;
     public float OpenAmount = 100;
     Vector3 NormalSize;
@@ -16,6 +17,8 @@ public class OpeningClockMenu : MonoBehaviour
     {
         NormalSize = transform.localScale;
         BigSize = transform.localScale + Vector3.one;
+        if (displayPlayerNotes != null)
+            displayPlayerNotes.enabled = false;
     }
 
     // Update is called once per frame
@@ -37,6 +40,12 @@ public class OpeningClockMenu : MonoBehaviour
     }
     void MenuOpen()
     {
+        if (Toggle)
+            TelemetryLogger.Log(this, "Opened Journal");
+        else
+            TelemetryLogger.Log(this, "Closed Journal");
+
+        displayPlayerNotes.enabled = Toggle;
         Toggle = !Toggle;
         OpenAmount = OpenAmount * -1;
         menu.transform.position -= new Vector3(OpenAmount, 0, 0);
