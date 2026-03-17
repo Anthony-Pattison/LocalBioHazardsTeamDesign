@@ -12,6 +12,9 @@ public class DiaplayPlayerNotes : MonoBehaviour
 
     private void OnDisable()
     {
-         PN.PlayerWrittenNotes = Input.text;
+        if (Input.text != PN.PlayerWrittenNotes)
+            TelemetryLogger.Log(this, "Notes Updated", $"|Old Notes: {PN.PlayerWrittenNotes} | New Notes: {Input.text}");
+
+        PN.PlayerWrittenNotes = Input.text;
     }
 }
