@@ -49,6 +49,9 @@ public class EventCore : MonoBehaviour
     [HideInInspector]
     //event that updates the parallax scrolling value. usually used when swapping camera position (pressing camera triggers)
     public UnityEvent updateParallaxScrollingEV;
+    [HideInInspector]
+    //event that updates the parallax scrolling value. usually used when swapping camera position (pressing camera triggers)
+    public UnityEvent resetGameState;
 
     //for testing purposes in order to invoke the event through pressing a button
     public void InvokeProcessObjectEV(GameObject gameObj)

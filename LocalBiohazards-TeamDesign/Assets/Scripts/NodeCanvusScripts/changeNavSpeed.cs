@@ -5,9 +5,12 @@ public class changeNavSpeed : MonoBehaviour
 {
     public NavMeshAgent agent;
     Transform cameraTransform;
+    EventCore eventCore;
+
     private void Start()
     {
         cameraTransform = GameObject.Find("CameraHolder").transform;
+        eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
     }
 
     private void Update()
@@ -22,5 +25,12 @@ public class changeNavSpeed : MonoBehaviour
     public void changeSpeed(float newSpeed)
     {
         agent.speed = newSpeed;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            eventCore.resetGameState.Invoke();
+        }
     }
 }
