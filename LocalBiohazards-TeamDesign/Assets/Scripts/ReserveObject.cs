@@ -1,20 +1,26 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
+[Serializable]
+public class audio {
+    public AudioClip itemChime;
+    public AudioClip emptyItem;
+}
 public class ReserveObject : MonoBehaviour
 {
     EventCore eventCore;
     NavMeshAgent agent;
-    
+    AudioManager audioManager;
     public GameObject reservedObj = null;
-
+    public audio audioClips;
     bool queuedInteraction;
 
     void Start()
     {
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         agent = gameObject.GetComponent<NavMeshAgent>();
-
+        audioManager = GameObject.Find("AuidoManager").GetComponent <AudioManager>();
         eventCore.reserveObjectEV.AddListener(reserveObject);
         eventCore.unreserveObjectEV.AddListener(unreserveObject);
     }
@@ -27,10 +33,13 @@ public class ReserveObject : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             queuedInteraction = true;
+        if (Input.GetMouseButtonDown(0) && reservedObj == null)
+            audioManager.PlayOneShot(audioClips.emptyItem);
     }
 
     void reserveObject(GameObject selectedObj)
     {
+        audioManager.PlayOneShot(audioClips.itemChime);
         reservedObj = selectedObj;
     }
 

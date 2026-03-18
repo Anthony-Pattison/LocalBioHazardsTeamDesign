@@ -9951,6 +9951,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BearTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3260349443969850211, guid: 0cd3e3f71d7ab1d4e9a53b515c33aa52, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7700031420781448990, guid: 0cd3e3f71d7ab1d4e9a53b515c33aa52, type: 3}
       propertyPath: m_Size.x
       value: 5
@@ -13158,7 +13162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &727243349
 MonoBehaviour:
   m_ObjectHideFlags: 0
