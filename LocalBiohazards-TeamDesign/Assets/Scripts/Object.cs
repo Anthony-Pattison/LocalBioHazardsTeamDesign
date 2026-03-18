@@ -55,8 +55,11 @@ public class Object : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(1))
                 {
+                    eventCore.reserveObjectEV.Invoke(gameObject);
+
                     eventCore.processObjectEV.Invoke(this.gameObject);
                 }
+                
             }
         }
     }
@@ -65,7 +68,6 @@ public class Object : MonoBehaviour
     //    if (collision.gameObject.GetComponent<PlayerController>() != null)
     //    {
     //        print($"player enters: {gameObject.name}");
-    //        eventCore.reserveObjectEV.Invoke(gameObject);
 
     //    }
     //}
