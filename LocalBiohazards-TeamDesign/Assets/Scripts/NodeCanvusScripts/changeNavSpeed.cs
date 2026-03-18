@@ -13,6 +13,7 @@ public class changeNavSpeed : MonoBehaviour
 
     [HideInInspector]
     public bool killed = false;
+    public bool enableGameover = true;
     
     bool dead = false;
     private void Start()
@@ -58,7 +59,7 @@ public class changeNavSpeed : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && enableGameover)
         {
             TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {name}, Location: {transform.position}");
             eventCore.resetGameState.Invoke();

@@ -1,9 +1,10 @@
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
-using UnityEngine.AI;
-using UnityEngine;
 using ParadoxNotion.Serialization.FullSerializer;
 using System;
+using UnityEngine;
+using UnityEngine.AI;
+using static UnityEditor.FilePathAttribute;
 
 namespace NodeCanvas.Tasks.Actions
 {
@@ -31,10 +32,12 @@ namespace NodeCanvas.Tasks.Actions
         //EndAction can be called from anywhere.
         protected override void OnExecute()
         {
+            currentLocation _temp = (currentLocation)1;
             foreach (var location in locations.aiLocations)
             {
                 if (location.location == loactionsToCycleThrough[roomNumber])
                 {
+                    _temp = location.location;
                     locationToMoveToBBP.value = location.locationTransform;
                     roomNumber++;
                     if (roomNumber > loactionsToCycleThrough.Length -1)
@@ -46,7 +49,7 @@ namespace NodeCanvas.Tasks.Actions
             }
 
             navAgentBBP.value.SetDestination(locationToMoveToBBP.value.position);
-            agent.GetComponent<victimFSMClass>().currentLocation = goToLocation;
+            agent.GetComponent<victimFSMClass>().currentLocation = _temp;
         }
 
         //Called once per frame while the action is active.
