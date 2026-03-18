@@ -59,10 +59,23 @@ public class changeNavSpeed : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && enableGameover)
+        RaycastHit hitInfo;
+        Physics.Linecast(transform.position, other.gameObject.transform.position, out hitInfo);
+
+        if (other.gameObject.CompareTag("Player"))
         {
-            TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {name}, Location: {transform.position}");
-            eventCore.resetGameState.Invoke();
+            print("found player");
+            if (enableGameover && (hitInfo.collider.gameObject.CompareTag("UndetectableCollision") || hitInfo.collider.gameObject.CompareTag("Player")))
+            {
+                print($"something is blocking player but is being ignored, leading to game over: {hitInfo.collider.gameObject}");
+                TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {name}, Location: {transform.position}");
+                eventCore.resetGameState.Invoke();
+            }
+            else
+            {
+                print($"something is blocking player: {hitInfo.collider.gameObject}");
+            }
+
         }
     }
 }
