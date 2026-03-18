@@ -1,16 +1,22 @@
 using NodeCanvas.StateMachines;
+using System;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.AI;
-
+[Serializable]
+public class audioVictim
+{
+    public AudioClip deathSound;
+}
 public class changeNavSpeed : MonoBehaviour
 {
+    public audioVictim audioSound;
     public NavMeshAgent agent;
     public GameObject weponNeededToKill;
     public Animator animator;
     Transform cameraTransform;
     EventCore eventCore;
-
+    AudioManager audioManager;
     [HideInInspector]
     public bool killed = false;
     public bool enableGameover = true;
@@ -18,6 +24,7 @@ public class changeNavSpeed : MonoBehaviour
     bool dead = false;
     private void Start()
     {
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         cameraTransform = GameObject.Find("CameraHolder").transform;
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         displayWepon(false);
@@ -52,6 +59,7 @@ public class changeNavSpeed : MonoBehaviour
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<FSMOwner>().enabled = false;
+        audioManager.PlayOneShot(audioSound.deathSound);
         killed = false;
         displayWepon(false);
         dead = true;
