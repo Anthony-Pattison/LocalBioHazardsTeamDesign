@@ -10,6 +10,7 @@ TagManager:
   - EnemyTrapped
   - OpenTrap
   - UndetectableCollision
+  - NPC
   layers:
   - Default
   - TransparentFX

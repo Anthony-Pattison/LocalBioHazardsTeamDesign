@@ -12,10 +12,12 @@ public class changeNavSpeed : MonoBehaviour
     EventCore eventCore;
 
     [HideInInspector]
-    public bool killed = false;
+    public bool killed = false; 
     public bool enableGameover = true;
     
-    bool dead = false;
+    public bool dead = false;
+    public bool foundCorpseBehavior = false;
+    public bool playerDetected = false;
     private void Start()
     {
         cameraTransform = GameObject.Find("CameraHolder").transform;
@@ -46,6 +48,7 @@ public class changeNavSpeed : MonoBehaviour
 
     void killCharacter(bool die)
     {
+        //respectfully why are there three dying variables bro
         if (die == false)
             return;
         animator.SetTrigger("dead");
@@ -65,17 +68,44 @@ public class changeNavSpeed : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             print("found player");
-            if (enableGameover && (hitInfo.collider.gameObject.CompareTag("UndetectableCollision") || hitInfo.collider.gameObject.CompareTag("Player")))
+            if (hitInfo.collider.gameObject.CompareTag("UndetectableCollision") || hitInfo.collider.gameObject.CompareTag("Player"))
             {
-                print($"something is blocking player but is being ignored, leading to game over: {hitInfo.collider.gameObject}");
-                TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {name}, Location: {transform.position}");
-                eventCore.resetGameState.Invoke();
+                if (enableGameover)
+                {
+                    print($"something is blocking player but is being ignored, leading to game over: {hitInfo.collider.gameObject}");
+                    TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {name}, Location: {transform.position}");
+                    eventCore.resetGameState.Invoke();
+                }
+                else
+                {
+                    print($"something is blocking player but is being ignored, no game over though: {hitInfo.collider.gameObject}");
+                    playerDetected = true;
+                }
+
             }
             else
             {
                 print($"something is blocking player: {hitInfo.collider.gameObject}");
+                playerDetected = false;
             }
 
         }
+        else playerDetected = false;
+
+
+
+        if (other.gameObject.CompareTag("NPC"))
+        {
+            changeNavSpeed npc = other.gameObject.GetComponent<changeNavSpeed>();
+
+            if (npc.dead)
+                foundCorpseBehavior = true;
+
+        }
+    }
+
+    public bool GetFoundCorpseBehavior()
+    {
+        return foundCorpseBehavior;
     }
 }
