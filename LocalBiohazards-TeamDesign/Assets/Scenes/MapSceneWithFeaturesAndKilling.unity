@@ -32604,6 +32604,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4df8532e57a354196afc98f3b34346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::changeNavSpeed
+  audioSound:
+    deathSound: {fileID: 8300000, guid: 887baf30163d54a4d8b0788b04176001, type: 3}
   agent: {fileID: 1683515047}
   weponNeededToKill: {fileID: 1213313247}
   animator: {fileID: 957190304}
@@ -34920,6 +34922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4df8532e57a354196afc98f3b34346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::changeNavSpeed
+  audioSound:
+    deathSound: {fileID: 8300000, guid: 2385b41b56e0528418deaaa183cecfdb, type: 3}
   agent: {fileID: 1756916382}
   weponNeededToKill: {fileID: 1338169791}
   animator: {fileID: 1848165448}
