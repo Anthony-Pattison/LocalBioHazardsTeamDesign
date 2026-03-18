@@ -20,7 +20,7 @@ public class ReserveObject : MonoBehaviour
     {
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         agent = gameObject.GetComponent<NavMeshAgent>();
-        audioManager = GameObject.Find("AuidoManager").GetComponent <AudioManager>();
+        audioManager = GameObject.Find("AudioManager").GetComponent <AudioManager>();
         eventCore.reserveObjectEV.AddListener(reserveObject);
         eventCore.unreserveObjectEV.AddListener(unreserveObject);
     }
@@ -33,7 +33,7 @@ public class ReserveObject : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             queuedInteraction = true;
-        if (Input.GetMouseButtonDown(0) && reservedObj == null)
+        if (Input.GetMouseButtonDown(1) && reservedObj == null)
             audioManager.PlayOneShot(audioClips.emptyItem);
     }
 
