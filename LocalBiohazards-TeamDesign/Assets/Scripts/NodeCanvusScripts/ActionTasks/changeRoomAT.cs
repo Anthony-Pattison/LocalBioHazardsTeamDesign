@@ -20,10 +20,18 @@ namespace NodeCanvas.Tasks.Actions
         public BBParameter<float> stoppingDistanceBBP = 2;
 
         int roomNumber;
-        //Use for initialization. This is called only once in the lifetime of the task.
-        //Return null if init was successfull. Return an error string otherwise
+
         protected override string OnInit()
         {
+            //since its an asset graph, gotta set it through code
+            //the order of the ai way points have to be exactly like the list
+            GameObject aiWayPoints = GameObject.Find("AIWayPoints");
+
+            for (int i = 0; i < locations.aiLocations.Length; i++)
+            {
+                locations.aiLocations[i].locationTransform = aiWayPoints.transform.GetChild(i);
+            }
+
             return null;
         }
 

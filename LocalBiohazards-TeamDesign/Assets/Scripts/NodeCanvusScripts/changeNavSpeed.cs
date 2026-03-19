@@ -57,8 +57,6 @@ public class changeNavSpeed : MonoBehaviour
 
     void killCharacter(bool die)
     {
-       
-
         //respectfully why are there three dying variables bro
         if (die == false)
             return;
@@ -66,6 +64,7 @@ public class changeNavSpeed : MonoBehaviour
             audioManager.PlayOneShot(audioSound.deathSound);
         playerSound = true;
         animator.SetTrigger("dead");
+        transform.Find("ConeCollision").gameObject.SetActive(false);
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<FSMOwner>().enabled = false;
@@ -106,11 +105,12 @@ public class changeNavSpeed : MonoBehaviour
         }
         else playerDetected = false;
 
-
-
         if (other.gameObject.CompareTag("NPC"))
         {
-            changeNavSpeed npc = other.gameObject.GetComponent<changeNavSpeed>();
+            print("found npc");
+            //the sprite, which holds the capsule collider, is a child
+            //the component is in the parent
+            changeNavSpeed npc = other.GetComponentInParent<changeNavSpeed>();
 
             if (npc.dead)
                 foundCorpseBehavior = true;
