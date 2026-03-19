@@ -24,6 +24,8 @@ public class changeNavSpeed : MonoBehaviour
     public bool dead = false;
     public bool foundCorpseBehavior = false;
     public bool playerDetected = false;
+
+    bool playerSound = false;
     private void Start()
     {
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -55,14 +57,18 @@ public class changeNavSpeed : MonoBehaviour
 
     void killCharacter(bool die)
     {
+       
+
         //respectfully why are there three dying variables bro
         if (die == false)
             return;
+        if (!playerSound)
+            audioManager.PlayOneShot(audioSound.deathSound);
+        playerSound = true;
         animator.SetTrigger("dead");
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<FSMOwner>().enabled = false;
-        audioManager.PlayOneShot(audioSound.deathSound);
         killed = false;
         displayWepon(false);
         dead = true;
