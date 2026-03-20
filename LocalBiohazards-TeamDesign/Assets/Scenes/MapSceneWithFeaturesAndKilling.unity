@@ -7702,6 +7702,9 @@ MonoBehaviour:
   fillAmount: 0
   knifeFill: {fileID: 1484880062}
   seenValue: {fileID: 11400000, guid: e8eedcda418237840805cc4bbc35715a, type: 2}
+  secondsToCoolDown: 2
+  decreaseAmount: 0.01
+  coolDownWait: 0.01
 --- !u!1 &407303519
 GameObject:
   m_ObjectHideFlags: 0

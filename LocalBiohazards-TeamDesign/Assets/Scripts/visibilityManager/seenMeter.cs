@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,12 @@ public class seenMeter : MonoBehaviour
     public float fillAmount = 0f;
     public Image knifeFill;
     public value seenValue;
+    public float secondsToCoolDown = 1;
+    public float decreaseAmount = 0.01f;
+    public float coolDownWait = .5f;
+    float timer;
+
+    bool coroutineRunning = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,5 +33,25 @@ public class seenMeter : MonoBehaviour
             eventCore.resetGameState.Invoke();
             seenValue.resetValue();
         }
+
+        if (seenValue.valueNum > 0)
+        {
+            timer += Time.deltaTime;
+        }
+
+        if (timer >= secondsToCoolDown && !coroutineRunning)
+            StartCoroutine(lowerValue());
+    }
+
+    IEnumerator lowerValue()
+    {
+        coroutineRunning = true;
+        while (seenValue.valueNum > 0)
+        {
+            seenValue.valueNum -= decreaseAmount;
+            yield return new WaitForSeconds(coolDownWait);
+        }
+        timer = 0;
+        coroutineRunning = false;
     }
 }
