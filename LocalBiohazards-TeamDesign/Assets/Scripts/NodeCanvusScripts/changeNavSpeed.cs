@@ -8,9 +8,16 @@ public class audioVictim
 {
     public AudioClip deathSound;
 }
+
 public class changeNavSpeed : MonoBehaviour
 {
+    [Header("For the view meter")]
+    public value seenMeter;
+    [Tooltip("How much/fast the seen meter fills up")]
+    public float seenValue = 0.1f;
+    [Space(10.0f)]
     public audioVictim audioSound;
+    
     public NavMeshAgent agent;
     public GameObject weponNeededToKill;
     public Animator animator;
@@ -42,6 +49,8 @@ public class changeNavSpeed : MonoBehaviour
             CamPos.y = transform.position.y;
             transform.LookAt(CamPos);
         }
+        if(playerDetected)
+            seenMeter.valueNum += seenValue * Time.deltaTime;
 
         killCharacter(killed);
     }
@@ -87,12 +96,13 @@ public class changeNavSpeed : MonoBehaviour
                 {
                     print($"something is blocking player but is being ignored, leading to game over: {hitInfo.collider.gameObject}");
                     TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {name}, Location: {transform.position}");
-                    eventCore.resetGameState.Invoke();
+                    playerDetected = true;
+
+                    //eventCore.resetGameState.Invoke();
                 }
                 else
                 {
                     print($"something is blocking player but is being ignored, no game over though: {hitInfo.collider.gameObject}");
-                    playerDetected = true;
                 }
 
             }

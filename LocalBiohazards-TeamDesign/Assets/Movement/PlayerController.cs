@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask clickableLayers;
     public ParticleSystem clickEffect;
     public Transform CameraPos;
+    public value seenValue;
     private void Awake()
     {
         audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
         assignInputs();
 
     }
+
     private void Update()
     {
         Vector3 CamPos = CameraPos.position;
@@ -34,8 +36,8 @@ public class PlayerController : MonoBehaviour
             CamPos.y = transform.position.y;
             transform.LookAt(CamPos);
             //print($" Player rotation {transform.eulerAngles}, wanted rotation {CamPos}");
-
         }
+
 
         GetPlayerInput();
         if (agent.velocity != Vector3.zero)
