@@ -26942,13 +26942,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1454967192}
   - {fileID: 841360118}
+  - {fileID: 1454967192}
+  - {fileID: 405721861}
   - {fileID: 1319232459}
   - {fileID: 544908139}
   - {fileID: 1123742074}
   - {fileID: 1293541758}
-  - {fileID: 405721861}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -27314,7 +27314,7 @@ MonoBehaviour:
   WorldTimeMinutes: 0
   WorldTimeHours: 15
   MinuteIncrementAmount: 30
-  TimeTillIncrementInSeconds: 2
+  TimeTillIncrementInSeconds: 10
   timeCheck: 1
 --- !u!4 &1412198276
 Transform:

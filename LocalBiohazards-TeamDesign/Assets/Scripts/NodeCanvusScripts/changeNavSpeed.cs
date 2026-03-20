@@ -82,6 +82,7 @@ public class changeNavSpeed : MonoBehaviour
         dead = true;
         TelemetryLogger.Log(this, "NPC Killed", $"NPC Name: {name}, Location: {transform.position}");
     }
+  
     private void OnTriggerEnter(Collider other)
     {
         RaycastHit hitInfo;
