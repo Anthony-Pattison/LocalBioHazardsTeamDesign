@@ -3,6 +3,7 @@ using System;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
 [Serializable]
 public class audioVictim
 {
@@ -11,6 +12,7 @@ public class audioVictim
 
 public class changeNavSpeed : MonoBehaviour
 {
+    public SpriteRenderer victimSprite;
     [Header("For the view meter")]
     public value seenMeter;
     [Tooltip("How much/fast the seen meter fills up")]
@@ -64,6 +66,17 @@ public class changeNavSpeed : MonoBehaviour
         agent.speed = newSpeed;
     }
 
+    public void flipSprite()
+    {
+        Vector2 sceenpointOfCharacter = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 screenpointOfDestination = Camera.main.WorldToScreenPoint(agent.destination);
+
+        if (screenpointOfDestination.x > sceenpointOfCharacter.x)
+            victimSprite.flipX = true;
+        if (screenpointOfDestination.x < sceenpointOfCharacter.x)
+            victimSprite.flipX = false;
+
+    }
     void killCharacter(bool die)
     {
         //respectfully why are there three dying variables bro
