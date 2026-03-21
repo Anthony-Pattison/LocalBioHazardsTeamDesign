@@ -17,6 +17,10 @@ public class changeNavSpeed : MonoBehaviour
     public value seenMeter;
     [Tooltip("How much/fast the seen meter fills up")]
     public float seenValue = 0.1f;
+    [Tooltip("The rate of how quickly the seen meter fills up based on distance. Higher values mean quicker speed.")]
+    public float seenValueMultiplierRt = 3f;
+    [Tooltip("A calculation that increases how fast the meter fills up based on how close the player is")]
+    float seenValueMultiplier;
     [Space(10.0f)]
     public audioVictim audioSound;
     
@@ -26,6 +30,7 @@ public class changeNavSpeed : MonoBehaviour
     Transform cameraTransform;
     EventCore eventCore;
     AudioManager audioManager;
+    
     [HideInInspector]
     public bool killed = false; 
     public bool enableGameover = true;
@@ -52,7 +57,7 @@ public class changeNavSpeed : MonoBehaviour
             transform.LookAt(CamPos);
         }
         if(playerDetected && enableGameover)
-            seenMeter.valueNum += seenValue * Time.deltaTime;
+            seenMeter.valueNum += seenValue * seenValueMultiplier * Time.deltaTime;
 
         killCharacter(killed);
     }
@@ -90,6 +95,8 @@ public class changeNavSpeed : MonoBehaviour
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
         GetComponent<FSMOwner>().enabled = false;
+        playerDetected = false;
+        enableGameover = false;
         killed = false;
         displayWepon(false);
         dead = true;
@@ -107,6 +114,7 @@ public class changeNavSpeed : MonoBehaviour
             if (hitInfo.collider.gameObject.CompareTag("UndetectableCollision") || hitInfo.collider.gameObject.CompareTag("Player"))
             {
                 playerDetected = true;
+                seenValueMultiplier = 3 / Vector3.Distance(transform.position, other.gameObject.transform.position);
                 print($"something is blocking player but is being ignored, leading to detection: {hitInfo.collider.gameObject}");
 
             }

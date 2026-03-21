@@ -11,6 +11,7 @@ TagManager:
   - OpenTrap
   - UndetectableCollision
   - NPC
+  - DetectableCollision
   layers:
   - Default
   - TransparentFX
