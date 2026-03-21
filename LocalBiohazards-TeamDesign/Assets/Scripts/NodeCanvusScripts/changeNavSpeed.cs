@@ -51,7 +51,7 @@ public class changeNavSpeed : MonoBehaviour
             CamPos.y = transform.position.y;
             transform.LookAt(CamPos);
         }
-        if(playerDetected)
+        if(playerDetected && enableGameover)
             seenMeter.valueNum += seenValue * Time.deltaTime;
 
         killCharacter(killed);
@@ -106,18 +106,8 @@ public class changeNavSpeed : MonoBehaviour
             print("found player");
             if (hitInfo.collider.gameObject.CompareTag("UndetectableCollision") || hitInfo.collider.gameObject.CompareTag("Player"))
             {
-                if (enableGameover)
-                {
-                    print($"something is blocking player but is being ignored, leading to game over: {hitInfo.collider.gameObject}");
-                    TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {name}, Location: {transform.position}");
-                    playerDetected = true;
-
-                    //eventCore.resetGameState.Invoke();
-                }
-                else
-                {
-                    print($"something is blocking player but is being ignored, no game over though: {hitInfo.collider.gameObject}");
-                }
+                playerDetected = true;
+                print($"something is blocking player but is being ignored, leading to detection: {hitInfo.collider.gameObject}");
 
             }
             else

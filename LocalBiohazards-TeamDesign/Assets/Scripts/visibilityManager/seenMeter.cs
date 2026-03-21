@@ -31,6 +31,7 @@ public class seenMeter : MonoBehaviour
         if (knifeFill.fillAmount >= 1)
         {
             eventCore.resetGameState.Invoke();
+            TelemetryLogger.Log(this, "Failure By NPC", $"NPC Name: {gameObject.name}, Location: {gameObject.transform.position}");
             seenValue.resetValue();
         }
 
