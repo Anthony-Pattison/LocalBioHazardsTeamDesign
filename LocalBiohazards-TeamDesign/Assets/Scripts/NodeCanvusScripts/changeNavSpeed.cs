@@ -21,6 +21,7 @@ public class changeNavSpeed : MonoBehaviour
     public float seenValueMultiplierRt = 3f;
     [Tooltip("A calculation that increases how fast the meter fills up based on how close the player is")]
     float seenValueMultiplier;
+    public Collider visionCollider;
     [Space(10.0f)]
     public audioVictim audioSound;
     
@@ -42,6 +43,11 @@ public class changeNavSpeed : MonoBehaviour
     bool playerSound = false;
     private void Start()
     {
+        if (visionCollider == null)
+        {
+            visionCollider = transform.Find("ConeCollision").GetComponent<Collider>();
+        }
+        
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         cameraTransform = GameObject.Find("CameraHolder").transform;
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
@@ -105,6 +111,7 @@ public class changeNavSpeed : MonoBehaviour
   
     private void OnTriggerEnter(Collider other)
     {
+        visionCollider.enabled = false;
         RaycastHit hitInfo;
         Physics.Linecast(transform.position, other.gameObject.transform.position, out hitInfo);
 
@@ -138,6 +145,8 @@ public class changeNavSpeed : MonoBehaviour
                 foundCorpseBehavior = true;
 
         }
+
+        visionCollider.enabled = true;
     }
 
     public bool GetFoundCorpseBehavior()
