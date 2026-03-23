@@ -38734,7 +38734,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756916380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -39825,6 +39825,7 @@ GameObject:
   - component: {fileID: 1848165450}
   - component: {fileID: 1848165449}
   - component: {fileID: 1848165448}
+  - component: {fileID: 1848165452}
   m_Layer: 0
   m_Name: StevenSprite
   m_TagString: NPC
@@ -39951,6 +39952,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1756916381}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848165452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848165447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb19945acb707da46843b2e57b6f0bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::turnOffPlayerSprite
 --- !u!1 &1852862496 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 95265274591503627, guid: c6c0ee73c45195e47b48a7126dde96cd, type: 3}
