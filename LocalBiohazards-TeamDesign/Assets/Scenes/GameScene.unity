@@ -19218,6 +19218,7 @@ GameObject:
   - component: {fileID: 957190300}
   - component: {fileID: 957190304}
   - component: {fileID: 957190305}
+  - component: {fileID: 957190306}
   m_Layer: 0
   m_Name: TimmySprite
   m_TagString: NPC
@@ -19344,6 +19345,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &957190306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957190298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb19945acb707da46843b2e57b6f0bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::turnOffPlayerSprite
 --- !u!1 &958046451
 GameObject:
   m_ObjectHideFlags: 0
@@ -36098,7 +36111,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683515045}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
