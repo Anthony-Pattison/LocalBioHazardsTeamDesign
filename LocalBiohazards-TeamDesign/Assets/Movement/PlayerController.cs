@@ -69,17 +69,32 @@ public class PlayerController : MonoBehaviour
     {
         MousePosition = Input.mousePosition;
         RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, clickableLayers))
+        if (Physics.Raycast(ray, out hit, 100, clickableLayers))
         {
-            agent.destination = hit.point;
-            TelemetryLogger.Log(this, $"Click position: {hit.point}");
 
-            if (clickEffect != null)
+            NavMeshHit navHit;
+
+            if(NavMesh.SamplePosition(hit.point, out navHit, 1.0f, NavMesh.AllAreas))
             {
-                ParticleSystem _partical = Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
-                StartCoroutine(DestroyWayPoint(_partical.gameObject, 1.5f));
+                agent.destination = navHit.position;
+                TelemetryLogger.Log(this, $"Click position: {navHit.position}");
+
+                if (clickEffect != null)
+                {
+                    ParticleSystem _partical = Instantiate(clickEffect, hit.point += new Vector3(0, 0.1f, 0), clickEffect.transform.rotation);
+                    StartCoroutine(DestroyWayPoint(_partical.gameObject, 1.5f));
+                }
             }
+
+
+
+        }
+        else
+        {
+            agent.ResetPath();
+            Debug.Log("blocked click");
         }
     }
     /// <summary>
