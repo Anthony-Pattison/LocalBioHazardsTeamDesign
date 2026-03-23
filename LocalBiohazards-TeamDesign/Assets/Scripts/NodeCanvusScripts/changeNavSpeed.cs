@@ -21,7 +21,7 @@ public class changeNavSpeed : MonoBehaviour
     public float seenValueMultiplierRt = 3f;
     [Tooltip("A calculation that increases how fast the meter fills up based on how close the player is")]
     float seenValueMultiplier;
-    public Collider visionCollider;
+    public Collider areaOfVision;
     [Space(10.0f)]
     public audioVictim audioSound;
     
@@ -43,9 +43,9 @@ public class changeNavSpeed : MonoBehaviour
     bool playerSound = false;
     private void Start()
     {
-        if (visionCollider == null)
+        if (areaOfVision == null)
         {
-            visionCollider = transform.Find("ConeCollision").GetComponent<Collider>();
+            areaOfVision = transform.Find("AreaOfVision").GetComponent<Collider>();
         }
         
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
@@ -64,6 +64,7 @@ public class changeNavSpeed : MonoBehaviour
         }
         if(playerDetected && enableGameover)
             seenMeter.valueNum += seenValue * seenValueMultiplier * Time.deltaTime;
+            //seenMeter.valueNum += seenValue * Time.deltaTime;
 
         killCharacter(killed);
     }
@@ -111,18 +112,23 @@ public class changeNavSpeed : MonoBehaviour
   
     private void OnTriggerEnter(Collider other)
     {
-        visionCollider.enabled = false;
-        RaycastHit hitInfo;
-        Physics.Linecast(transform.position, other.gameObject.transform.position, out hitInfo);
+        areaOfVision.enabled = false;
+        GameObject collidedObj = other.gameObject;
 
-        if (other.gameObject.CompareTag("Player"))
+        RaycastHit hitInfo;
+        Physics.Linecast(transform.position, collidedObj.transform.position, out hitInfo);
+
+        if (collidedObj.CompareTag("Player"))
         {
             print("found player");
             if (hitInfo.collider.gameObject.CompareTag("UndetectableCollision") || hitInfo.collider.gameObject.CompareTag("Player"))
             {
                 playerDetected = true;
-                seenValueMultiplier = 3 / Vector3.Distance(transform.position, other.gameObject.transform.position);
+                seenValueMultiplier = seenValueMultiplierRt / Vector3.Distance(transform.position, other.gameObject.transform.position);
                 print($"something is blocking player but is being ignored, leading to detection: {hitInfo.collider.gameObject}");
+                print($"distance: {Vector3.Distance(transform.position, other.gameObject.transform.position)}");
+                print($"decrease value: {seenValue * seenValueMultiplier * Time.deltaTime}");
+                //print($"decrease value: {seenValue * Time.deltaTime}");
 
             }
             else
@@ -132,9 +138,8 @@ public class changeNavSpeed : MonoBehaviour
             }
 
         }
-        else playerDetected = false;
 
-        if (other.gameObject.CompareTag("NPC"))
+        if (collidedObj.CompareTag("NPC") && (hitInfo.collider.gameObject.CompareTag("NPC") || hitInfo.collider.gameObject.CompareTag("UndetectableCollision")))
         {
             print("found npc");
             //the sprite, which holds the capsule collider, is a child
@@ -146,7 +151,16 @@ public class changeNavSpeed : MonoBehaviour
 
         }
 
-        visionCollider.enabled = true;
+        areaOfVision.enabled = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            print("player has left vision");
+            playerDetected = false;
+        }
     }
 
     public bool GetFoundCorpseBehavior()
