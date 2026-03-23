@@ -1,10 +1,6 @@
 using NodeCanvas.Framework;
-using ParadoxNotion.Design;
-using ParadoxNotion.Serialization.FullSerializer;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.FilePathAttribute;
 
 namespace NodeCanvas.Tasks.Actions
 {
