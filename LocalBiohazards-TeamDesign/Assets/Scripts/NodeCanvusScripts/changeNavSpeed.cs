@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using NodeCanvas.StateMachines;
 using System;
 using Unity.VisualScripting.FullSerializer;
@@ -9,7 +10,13 @@ public class audioVictim
 {
     public AudioClip deathSound;
 }
+[Serializable]
+public struct killedNPC
+{
+    public string npcKilled;
+    public Vector3 posision;
 
+}
 public class changeNavSpeed : MonoBehaviour
 {
     public SpriteRenderer victimSprite;
@@ -41,6 +48,8 @@ public class changeNavSpeed : MonoBehaviour
     public bool playerDetected = false;
 
     bool playerSound = false;
+
+    
     private void Start()
     {
         if (areaOfVision == null)
@@ -107,7 +116,13 @@ public class changeNavSpeed : MonoBehaviour
         killed = false;
         displayWepon(false);
         dead = true;
-        TelemetryLogger.Log(this, "NPC Killed", $"NPC Name: {name}, Location: {transform.position}");
+        var killedNpcData = new killedNPC()
+        {
+            posision = transform.position,
+            npcKilled = this.gameObject.name
+        };
+
+        TelemetryLogger.Log(this, "NPC Killed", killedNpcData);
     }
   
     private void OnTriggerEnter(Collider other)

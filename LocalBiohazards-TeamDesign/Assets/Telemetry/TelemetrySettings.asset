@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userName: Local Biohazards
   secret: cake breakdown
-  _version: Playtest Build v1.0
+  _version: Playtest Build v1.0.2
   _serverURL: https://dd-telemetry-odd-e1dd6794cd3d.herokuapp.com/
   serverCommunication: 2
   debugLogging: 0
