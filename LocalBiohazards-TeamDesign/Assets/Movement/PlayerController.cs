@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
             if(NavMesh.SamplePosition(hit.point, out navHit, 1.0f, NavMesh.AllAreas))
             {
                 agent.destination = navHit.position;
-                TelemetryLogger.Log(this, $"Click position: {navHit.position}");
+                TelemetryLogger.Log(this, "Move", $"Click position: {navHit.position}");
 
                 if (clickEffect != null)
                 {
