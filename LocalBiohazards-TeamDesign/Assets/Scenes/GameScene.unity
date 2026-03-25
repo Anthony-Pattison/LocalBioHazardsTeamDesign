@@ -31941,7 +31941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldTimeMinutes: 0
   WorldTimeHours: 15
-  MinuteIncrementAmount: 30
+  MinuteIncrementAmount: 5
   TimeTillIncrementInSeconds: 2
   timeCheck: 1
 --- !u!4 &1412198276
