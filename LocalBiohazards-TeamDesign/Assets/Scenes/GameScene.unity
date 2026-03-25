@@ -31665,10 +31665,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62394fe043a7a3c4c9eeb11b721c5d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clockSFX:
+    hourSFX: {fileID: 8300000, guid: 49013598778516945950807b912a78e6, type: 3}
+    tickTockSFX: {fileID: 8300000, guid: da205b5ac16954241a1c3918edb22902, type: 3}
+    endBellSFX: {fileID: 8300000, guid: 8a1ae05c25a2bb946b277c1a85741cbc, type: 3}
   WorldTimeMinutes: 0
-  WorldTimeHours: 15
-  MinuteIncrementAmount: 30
-  TimeTillIncrementInSeconds: 2
+  WorldTimeHours: 18
+  MinuteIncrementAmount: 5
+  TimeTillIncrementInSeconds: 3
+  gameOverHour: 23
   timeCheck: 1
 --- !u!4 &1412198276
 Transform:
