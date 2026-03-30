@@ -28,8 +28,8 @@ public class ReserveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        if (queuedInteraction)
-            executeObjectProcessing();
+        //if (queuedInteraction)
+        //    executeObjectProcessing();
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
             queuedInteraction = true;
