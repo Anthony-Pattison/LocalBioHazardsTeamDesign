@@ -19,7 +19,6 @@ public class Inventory : MonoBehaviour
         PlayerTransform = GameObject.Find("Player").transform;
         eventCore.dropingTrapEV.AddListener(DropItem);
         eventCore.addToInventoryEV.AddListener(AddToInventory);
-        AddToInventory(Knife);
     }
 
     // Update is called once per frame
