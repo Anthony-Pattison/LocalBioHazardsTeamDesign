@@ -35,7 +35,7 @@ public class EventCore : MonoBehaviour
     public UnityEvent finishTransitionEV;
 
     [HideInInspector]
-    //event for the player droping a trap on the ground
+    //event for the player dropping a trap on the ground
     public UnityEvent dropingTrapEV;
 
     [HideInInspector]

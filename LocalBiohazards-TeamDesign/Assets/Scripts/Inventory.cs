@@ -9,6 +9,9 @@ public class Inventory : MonoBehaviour
     public Items Knife;
     public GameObject TrapObject;
     Transform PlayerTransform;
+
+    public int itemCap;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

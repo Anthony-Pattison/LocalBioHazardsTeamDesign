@@ -36842,8 +36842,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList: []
-  Knife: {fileID: 11400000, guid: 6fd4a18de3b0509488ac0b511559b73d, type: 2}
-  TrapObject: {fileID: 8635037418421832353, guid: 698d125dbb802ba4da0ae35d513e4ebc, type: 3}
+  Knife: {fileID: 0}
+  TrapObject: {fileID: 0}
+  itemCap: 0
 --- !u!4 &1578351352
 Transform:
   m_ObjectHideFlags: 0
