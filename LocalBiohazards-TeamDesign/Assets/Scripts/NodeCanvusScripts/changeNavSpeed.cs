@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using NodeCanvas.StateMachines;
 using System;
+using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,7 +15,7 @@ public class audioVictim
 public struct killedNPC
 {
     public string npcKilled;
-    public Vector3 posision;
+    public Vector3 position;
 
 }
 public class changeNavSpeed : MonoBehaviour
@@ -71,9 +72,12 @@ public class changeNavSpeed : MonoBehaviour
             CamPos.y = transform.position.y;
             transform.LookAt(CamPos);
         }
-        if(playerDetected && enableGameover)
+        if (playerDetected && enableGameover)
+        {
+            eventCore.victimName = gameObject.name;
             seenMeter.valueNum += seenValue * seenValueMultiplier * Time.deltaTime;
-            //seenMeter.valueNum += seenValue * Time.deltaTime;
+        }
+        //seenMeter.valueNum += seenValue * Time.deltaTime;
 
         killCharacter(killed);
     }
@@ -118,8 +122,8 @@ public class changeNavSpeed : MonoBehaviour
         dead = true;
         var killedNpcData = new killedNPC()
         {
-            posision = transform.position,
-            npcKilled = this.gameObject.name
+            npcKilled = this.gameObject.name,
+            position = transform.position
         };
 
         TelemetryLogger.Log(this, "NPC Killed", killedNpcData);

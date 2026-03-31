@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 public class EventCore : MonoBehaviour
 {
+    public string victimName;
     [HideInInspector]
     //event for processing an object player interacts with
     public UnityEvent<GameObject> processObjectEV;

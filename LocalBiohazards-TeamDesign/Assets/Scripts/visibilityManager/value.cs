@@ -14,5 +14,6 @@ public class value : ScriptableObject
     public void resetValue()
     {
         valueNum = 0;
+
     }
 }

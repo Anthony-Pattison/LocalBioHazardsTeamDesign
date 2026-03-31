@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class ItemIconDisplay : MonoBehaviour
 {
     EventCore eventcore; 
-    Image BackgroundImage;
+    public Image BackgroundImage;
     public Inventory inventory;
     public GameObject ItemIcon;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

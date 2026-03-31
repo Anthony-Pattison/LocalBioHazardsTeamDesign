@@ -17,6 +17,12 @@ public class resetGameState : MonoBehaviour
         StartCoroutine(fadeInAndOut(1, true));
     }
 
+    public struct FailureNpcData
+    {
+        public string npcName;
+        public Vector3 location;
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(resetKey))
@@ -27,6 +33,13 @@ public class resetGameState : MonoBehaviour
     void resetGame()
     {
         StartCoroutine(fadeInAndOut(0, false));
+        FailureNpcData data = new FailureNpcData()
+        {
+            npcName = eventCore.victimName,
+            location = gameObject.transform.position
+        };
+
+        TelemetryLogger.Log(this, "Failure By NPC", data);
     }
 
     IEnumerator fadeInAndOut(float alpha, bool fadeIn)

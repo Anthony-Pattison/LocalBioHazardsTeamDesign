@@ -28,6 +28,13 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    [System.Serializable]
+    public struct ClickEventData
+    {
+        public Vector3 clickPosition;
+
+    }
+
     private void Update()
     {
         Vector3 CamPos = CameraPos.position;
@@ -77,8 +84,13 @@ public class PlayerController : MonoBehaviour
 
             if(NavMesh.SamplePosition(hit.point, out navHit, 1.0f, NavMesh.AllAreas))
             {
+                var data = new ClickEventData()
+                {
+                    clickPosition = navHit.position
+                };
+
                 agent.destination = navHit.position;
-                TelemetryLogger.Log(this, "Move", $"Click position: {navHit.position}");
+                TelemetryLogger.Log(this, "Move", data);
 
                 if (clickEffect != null)
                 {
