@@ -36979,7 +36979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList: []
-  Knife: {fileID: 0}
+  Knife: {fileID: 11400000, guid: 6fd4a18de3b0509488ac0b511559b73d, type: 2}
   TrapObject: {fileID: 0}
   itemCap: 0
 --- !u!4 &1578351352
