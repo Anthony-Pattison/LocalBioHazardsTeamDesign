@@ -102,7 +102,7 @@ public class changeNavSpeed : MonoBehaviour
             victimSprite.flipX = false;
 
     }
-    void killCharacter(bool die)
+    public void killCharacter(bool die)
     {
         //respectfully why are there three dying variables bro
         if (die == false)
