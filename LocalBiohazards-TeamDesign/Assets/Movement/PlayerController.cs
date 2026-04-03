@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
             KillerSpriteRenderer.flipX = false;
         }
     }
+    
     void GetPlayerInput()
     {
         if (Input.GetKeyDown(KeyCode.Q))

@@ -19,6 +19,7 @@ namespace NodeCanvas.Tasks.Actions
 
         protected override string OnInit()
         {
+            loactionsToCycleThrough = agent.GetComponent<locationsToCycleThoughNPCs>().roomsToCycleThough;
             //since its an asset graph, gotta set it through code
             //the order of the ai way points have to be exactly like the list
             GameObject aiWayPoints = GameObject.Find("AIWayPoints");
