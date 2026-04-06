@@ -10,7 +10,9 @@ public class killingVictims : MonoBehaviour
     changeNavSpeed stevensClass;
     Inventory currentInventory;
     public Items bat;
+    public Items chainsaw;
     public Items rope;
+    public Items acidBottle;
 
     bool canKillTimmy;
     bool canKillSteven;
@@ -28,7 +30,7 @@ public class killingVictims : MonoBehaviour
         checkIfKill();
         mouseInput();
     }
-
+    
     void mouseInput()
     {
         if (canKillSteven)
@@ -36,6 +38,7 @@ public class killingVictims : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 stevensClass.killed = true;
+                determineKillWeapon(stevensClass);
             }
         }
         if (canKillTimmy)
@@ -43,6 +46,7 @@ public class killingVictims : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 timmysClass.killed = true;
+                determineKillWeapon(timmysClass);
             }
         }
     }
@@ -51,9 +55,10 @@ public class killingVictims : MonoBehaviour
         float distanceToTimmy = Vector3.Distance(transform.position, timmyTransform.position);
         float distanceToSteven = Vector3.Distance(transform.position, stevensTransform.position);
 
-        if (distanceToSteven < tiggerDistance && currentInventory.itemList.Contains(bat))
+        if (distanceToSteven < tiggerDistance && (currentInventory.itemList.Contains(bat) || currentInventory.itemList.Contains(chainsaw) || currentInventory.itemList.Contains(acidBottle)))
         {
             canKillSteven = true;
+            determineKillWeaponPrompt(stevensClass);
             stevensClass.displayWepon(true);
         }
         else
@@ -61,9 +66,10 @@ public class killingVictims : MonoBehaviour
             canKillSteven = false;
             stevensClass.displayWepon(false);
         }
-        if (distanceToTimmy < tiggerDistance && currentInventory.itemList.Contains(rope))
+        if (distanceToTimmy < tiggerDistance && (currentInventory.itemList.Contains(rope) || currentInventory.itemList.Contains(chainsaw)))
         {
             canKillTimmy = true;
+            determineKillWeaponPrompt(timmysClass);
             timmysClass.displayWepon(true);
         }
         else
@@ -71,5 +77,47 @@ public class killingVictims : MonoBehaviour
             canKillTimmy = false;
             timmysClass.displayWepon(false);
         }
+    }
+
+    void determineKillWeaponPrompt(changeNavSpeed npc)
+    {
+        if (npc.gameObject.name == "Steven")
+        {
+            if (currentInventory.itemList.Contains(bat))
+                npc.killWeaponImage.sprite = bat.ItemImage;
+            else if (currentInventory.itemList.Contains(chainsaw))
+                npc.killWeaponImage.sprite = chainsaw.ItemImage;
+            else if (currentInventory.itemList.Contains(acidBottle))
+                npc.killWeaponImage.sprite = acidBottle.ItemImage;
+        }
+        else if (npc.gameObject.name == "Timmy")
+        {
+            if (currentInventory.itemList.Contains(rope))
+                npc.killWeaponImage.sprite = rope.ItemImage;
+            else if (currentInventory.itemList.Contains(chainsaw))
+                npc.killWeaponImage.sprite = chainsaw.ItemImage;
+        }
+    }
+
+    void determineKillWeapon(changeNavSpeed npc)
+    {
+        if (npc.gameObject.name == "Steven")
+        {
+            if (currentInventory.itemList.Contains(bat))
+                npc.killCharacter(true, bat);
+            else if (currentInventory.itemList.Contains(chainsaw))
+                npc.killCharacter(true, chainsaw);
+            else if (currentInventory.itemList.Contains(acidBottle))
+                npc.killCharacter(true, acidBottle);
+        }
+        else if (npc.gameObject.name == "Timmy")
+        {
+            if (currentInventory.itemList.Contains(rope))
+                npc.killCharacter(true, rope);
+            else if (currentInventory.itemList.Contains(chainsaw))
+                npc.killCharacter(true, chainsaw);
+        }
+
+        
     }
 }

@@ -6,6 +6,7 @@ using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 [Serializable]
 public class audioVictim
 {
@@ -35,6 +36,7 @@ public class changeNavSpeed : MonoBehaviour
     
     public NavMeshAgent agent;
     public GameObject weponNeededToKill;
+    public Image killWeaponImage;
     public Animator animator;
     Transform cameraTransform;
     EventCore eventCore;
@@ -61,6 +63,7 @@ public class changeNavSpeed : MonoBehaviour
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         cameraTransform = GameObject.Find("CameraHolder").transform;
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
+        killWeaponImage = weponNeededToKill.transform.GetChild(0).GetComponent<Image>();
         displayWepon(false);
     }
 
@@ -79,12 +82,14 @@ public class changeNavSpeed : MonoBehaviour
         }
         //seenMeter.valueNum += seenValue * Time.deltaTime;
 
-        killCharacter(killed);
+        //killCharacter(killed);
     }
     public void displayWepon(bool state)
     {
-        if (!dead) 
+        if (!dead)
             weponNeededToKill.SetActive(state);
+            
+            
     }
     public void changeSpeed(float newSpeed)
     {
@@ -102,7 +107,7 @@ public class changeNavSpeed : MonoBehaviour
             victimSprite.flipX = false;
 
     }
-    public void killCharacter(bool die)
+    public void killCharacter(bool die, Items killWeapon)
     {
         //respectfully why are there three dying variables bro
         if (die == false)
@@ -110,7 +115,7 @@ public class changeNavSpeed : MonoBehaviour
         if (!playerSound)
             audioManager.PlayOneShot(audioSound.deathSound);
         playerSound = true;
-        animator.SetTrigger("dead");
+        playKillAnimation(killWeapon);
         transform.Find("ConeCollision").gameObject.SetActive(false);
         GetComponent<BoxCollider>().enabled = false;
         GetComponent<NavMeshAgent>().enabled = false;
@@ -127,6 +132,24 @@ public class changeNavSpeed : MonoBehaviour
         };
 
         TelemetryLogger.Log(this, "NPC Killed", killedNpcData);
+    }
+
+    void playKillAnimation(Items killWeapon)
+    {
+        if (killWeapon.ItemName == "Bat" || killWeapon.ItemName == "Rope")
+        {
+            animator.SetTrigger("dead");
+        }
+        else if (killWeapon.ItemName == "Chainsaw")
+        {
+            animator.SetTrigger("chainsawDeath");
+        }
+        else if (killWeapon.ItemName == "Acid Bottle")
+        {
+            animator.SetTrigger("chemDeath");
+        }
+        //death by poisoned water is not an anim trigger, but a bool
+        //will probably have to activate it manually
     }
   
     private void OnTriggerEnter(Collider other)
