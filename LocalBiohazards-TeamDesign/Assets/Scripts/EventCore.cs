@@ -40,6 +40,10 @@ public class EventCore : MonoBehaviour
     public UnityEvent dropingTrapEV;
 
     [HideInInspector]
+    //event for changing sprite. literally hardcoded just for killer changing to steven sprite
+    public UnityEvent changeKillerSpriteEV;
+
+    [HideInInspector]
     //event that gets gets called at a set time (In world clock game object)
     public UnityEvent<float> TurnOfTheHour;
 

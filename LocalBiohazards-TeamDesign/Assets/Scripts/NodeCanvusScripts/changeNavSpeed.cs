@@ -64,6 +64,8 @@ public class changeNavSpeed : MonoBehaviour
         cameraTransform = GameObject.Find("CameraHolder").transform;
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         killWeaponImage = weponNeededToKill.transform.GetChild(0).GetComponent<Image>();
+
+        eventCore.changeKillerSpriteEV.AddListener(ChangeChainsawKill);
         displayWepon(false);
     }
 
@@ -148,12 +150,16 @@ public class changeNavSpeed : MonoBehaviour
         {
             animator.SetTrigger("chemDeath");
         }
+        //for timmy drinking water
         else if (killWeapon.ItemName == "PoisonedWater")
         {
             animator.SetBool("chemDeath", true);
         }
-        //death by poisoned water is not an anim trigger, but a bool
-        //will probably have to activate it manually
+    }
+
+    void ChangeChainsawKill()
+    {
+        animator.SetBool("playerHasStevenFace", true);
     }
   
     private void OnTriggerEnter(Collider other)
