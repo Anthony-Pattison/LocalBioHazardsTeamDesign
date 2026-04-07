@@ -148,6 +148,10 @@ public class changeNavSpeed : MonoBehaviour
         {
             animator.SetTrigger("chemDeath");
         }
+        else if (killWeapon.ItemName == "PoisonedWater")
+        {
+            animator.SetBool("chemDeath", true);
+        }
         //death by poisoned water is not an anim trigger, but a bool
         //will probably have to activate it manually
     }

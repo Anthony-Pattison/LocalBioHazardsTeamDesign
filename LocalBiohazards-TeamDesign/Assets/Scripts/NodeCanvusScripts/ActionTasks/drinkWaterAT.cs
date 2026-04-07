@@ -8,7 +8,8 @@ namespace NodeCanvas.Tasks.Actions {
 	public class drinkWaterAT : ActionTask {
 
 		public BBParameter<GameObject> cupOfWaterBBP;
-		public BBParameter<bool> timmyIsPoisoned = false;
+		public BBParameter<bool> timmyIsPoisonedBBP = false;
+		public BBParameter<Animator> animatorBBP;
 		poisonCup poisonCupScript;
 		protected override string OnInit() {
 			if (cupOfWaterBBP.value.GetComponent<poisonCup>() == null)
@@ -27,11 +28,13 @@ namespace NodeCanvas.Tasks.Actions {
         }
 		protected override void OnUpdate()
 		{
-            if (Vector3.Distance(agent.transform.position, cupOfWaterBBP.value.transform.position) < 7)
+			if (Vector3.Distance(agent.transform.position, cupOfWaterBBP.value.transform.position) < 7)
             {
+                animatorBBP.value.SetTrigger("drinkWater");
+
                 if (poisonCupScript.isPoisoned)
                 {
-                    timmyIsPoisoned.value = true;
+                    timmyIsPoisonedBBP.value = true;
                 }
             }
         }

@@ -17,6 +17,7 @@ public class resetGameState : MonoBehaviour
         StartCoroutine(fadeInAndOut(1, true));
     }
 
+    [System.Serializable]
     public struct FailureNpcData
     {
         public string npcName;
