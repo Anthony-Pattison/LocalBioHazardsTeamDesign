@@ -29,7 +29,7 @@ namespace NodeCanvas.Tasks.Actions {
 		{
             if (Vector3.Distance(agent.transform.position, cupOfWaterBBP.value.transform.position) < 7)
             {
-                if (poisonCupScript.isPoisend)
+                if (poisonCupScript.isPoisoned)
                 {
                     timmyIsPoisoned.value = true;
                 }
