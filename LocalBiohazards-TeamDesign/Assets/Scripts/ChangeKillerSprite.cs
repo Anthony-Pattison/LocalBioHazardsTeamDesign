@@ -24,7 +24,6 @@ public class ChangeKillerSprite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(Vector3.Distance(transform.position, playerAnimator.transform.position));
         if (Input.GetMouseButtonDown(1) && stevenClass.dead && Vector3.Distance(transform.position, playerAnimator.transform.position) < pickUpDistance)
         {
             ChangeSprite();
