@@ -15,6 +15,9 @@ public class ItemIconDisplay : MonoBehaviour
 
     public Transform PlayerPos;
     Vector3 spawnLocation;
+
+    GameObject InventoryManage;
+        
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +28,7 @@ public class ItemIconDisplay : MonoBehaviour
         BackgroundImage.enabled = false;
         ItemIcon.SetActive(false);
         eventcore.addToInventoryEV.AddListener(SetItemActive);
-        
+        InventoryManage = GameObject.FindGameObjectWithTag("InventoryManager");
     }
     private void Update()
     {
@@ -42,11 +45,19 @@ public class ItemIconDisplay : MonoBehaviour
     {
         foreach (Items inventory in inventory.itemList)
         {
-            if (PickedUpItem == ItemIcon.GetComponent<ItemImageInteraction>().Item)
+            if (PickedUpItem == ItemIcon.GetComponent<ItemImageInteraction>().Item )
             {
                 BackgroundImage.enabled = true;
                 ItemIcon.SetActive(true);
+
+                InventoryManage.GetComponent<InventoryManager>().itemSize += 1;
                 return;
+
+            }
+            else if(InventoryManage.GetComponent<InventoryManager>().itemSize == 3)
+            {
+                Debug.Log("cant put anymore items!");
+         
             }
 
         }
@@ -55,7 +66,7 @@ public class ItemIconDisplay : MonoBehaviour
     public void removeItem()
     {
         Debug.Log("Remove Item");
-
+        InventoryManage.GetComponent<InventoryManager>().itemSize -= 1;
         BackgroundImage.enabled = false;
         ItemIcon.SetActive(false);
 

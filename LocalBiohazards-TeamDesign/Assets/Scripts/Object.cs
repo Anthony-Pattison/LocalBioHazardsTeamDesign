@@ -8,6 +8,7 @@ public class Object : MonoBehaviour
     Transform playerTransform;
     public float stoppingDistacnce = 2.0f;
     public float playerDistance;
+    GameObject InventoryManage;
     //things that will happen when this object is interacted with and processed
     [Header("Actions\n------------------")]
     [Header("General")]
@@ -40,10 +41,14 @@ public class Object : MonoBehaviour
     public List<string> inventoryCondition; //an object must be in inventory
     public List<string> flagCondition; //a flag from the flag core must be true
 
+
+
     private void Start()
     {
         eventCore = GameObject.Find("EventCore").GetComponent<EventCore>();
         playerTransform = GameObject.Find("Player").transform;
+        InventoryManage = GameObject.FindGameObjectWithTag("InventoryManager");
+
     }
     private void Update()
     {
@@ -53,11 +58,17 @@ public class Object : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
-                if (Input.GetMouseButtonDown(1))
+                if (Input.GetMouseButtonDown(1) && InventoryManage.GetComponent<InventoryManager>().itemSize < 3)
                 {
                     eventCore.reserveObjectEV.Invoke(gameObject);
 
                     eventCore.processObjectEV.Invoke(this.gameObject);
+                }
+
+                else if(Input.GetMouseButtonDown(1) && InventoryManage.GetComponent<InventoryManager>().itemSize == 3)
+                {
+                    Debug.Log("cant add!");
+                    InventoryManage.GetComponent<InventoryManager>().displayMessage();
                 }
                 
             }

@@ -12,6 +12,7 @@ TagManager:
   - UndetectableCollision
   - NPC
   - DetectableCollision
+  - InventoryManager
   layers:
   - Default
   - TransparentFX
