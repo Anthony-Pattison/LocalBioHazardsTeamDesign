@@ -13,13 +13,16 @@ public class ItemImageInteraction : MonoBehaviour
     public GameObject TextBox;
     TextMeshProUGUI ItemDisc;
     float timer;
+
+    ItemIconDisplay itemIconDisplay;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         NormalSize = transform.localScale;
         BigSize = transform.localScale + Vector3.one;
         animator = GetComponent<Animator>();
-        ItemDisc = TextBox.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>(); 
+        ItemDisc = TextBox.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,8 @@ public class ItemImageInteraction : MonoBehaviour
     }
     void MoseOver(Vector3 mousepos)
     {
+        itemIconDisplay = GetComponentInParent<ItemIconDisplay>();
+
         if (CheckMouseOverUIWithThis())
         {
             animator.SetBool("Shake", true);
@@ -40,7 +45,15 @@ public class ItemImageInteraction : MonoBehaviour
                 TextBox.SetActive(true);
                 ItemDisc.text = Item.ItemDiscription;
             }
+
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                //Debug.Log("Remove Item");
+                itemIconDisplay.removeItem();
+            }
             return;
+
         }
         TextBox.SetActive(false);
         timer = 0;
@@ -74,4 +87,5 @@ public class ItemImageInteraction : MonoBehaviour
     {
         return EventSystem.current.IsPointerOverGameObject();
     }
+
 }

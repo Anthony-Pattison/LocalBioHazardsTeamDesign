@@ -1,3 +1,6 @@
+using JetBrains.Annotations;
+using UnityEditor.Rendering;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +10,11 @@ public class ItemIconDisplay : MonoBehaviour
     public Image BackgroundImage;
     public Inventory inventory;
     public GameObject ItemIcon;
+
+    public GameObject Item;
+
+    public Transform PlayerPos;
+    Vector3 spawnLocation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,6 +25,12 @@ public class ItemIconDisplay : MonoBehaviour
         BackgroundImage.enabled = false;
         ItemIcon.SetActive(false);
         eventcore.addToInventoryEV.AddListener(SetItemActive);
+        
+    }
+    private void Update()
+    {
+        PlayerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        spawnLocation = new Vector3(PlayerPos.position.x, 0.5f, PlayerPos.position.z);
     }
     /// <summary>
     /// Sets the item display that this has children active and <div>
@@ -34,8 +48,19 @@ public class ItemIconDisplay : MonoBehaviour
                 ItemIcon.SetActive(true);
                 return;
             }
-            
+
         }
     }
-  
+
+    public void removeItem()
+    {
+        Debug.Log("Remove Item");
+
+        BackgroundImage.enabled = false;
+        ItemIcon.SetActive(false);
+
+        Instantiate(Item, spawnLocation, Quaternion.identity);
+        return;
+        
+    }
 }
