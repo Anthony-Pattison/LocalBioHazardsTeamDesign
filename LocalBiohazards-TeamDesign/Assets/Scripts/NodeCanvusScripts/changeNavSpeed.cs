@@ -33,7 +33,8 @@ public class changeNavSpeed : MonoBehaviour
     public Collider areaOfVision;
     [Space(10.0f)]
     public audioVictim audioSound;
-    
+    public audioVictim chainSawSound;
+    public audioVictim acidSound;
     public NavMeshAgent agent;
     public GameObject weponNeededToKill;
     public Image killWeaponImage;
@@ -117,9 +118,7 @@ public class changeNavSpeed : MonoBehaviour
         //respectfully why are there three dying variables bro
         if (die == false)
             return;
-        if (!playerSound)
-            audioManager.PlayOneShot(audioSound.deathSound);
-        playerSound = true;
+        
         playKillAnimation(killWeapon);
         transform.Find("ConeCollision").gameObject.SetActive(false);
         GetComponent<BoxCollider>().enabled = false;
@@ -145,14 +144,23 @@ public class changeNavSpeed : MonoBehaviour
 
         if (killWeapon.ItemName == "Baseball Bat" || killWeapon.ItemName == "Rope")
         {
+            if (!playerSound)
+                audioManager.PlayOneShot(audioSound.deathSound);
+            playerSound = true;
             animator.SetTrigger("dead");
         }
         else if (killWeapon.ItemName == "Chainsaw")
         {
+            if (!playerSound)
+                audioManager.PlayOneShot(chainSawSound.deathSound);
+            playerSound = true;
             animator.SetTrigger("chainsawDeath");
         }
         else if (killWeapon.ItemName == "Acid Bottle")
         {
+            if (!playerSound)
+                audioManager.PlayOneShot(acidSound.deathSound);
+            playerSound = true;
             animator.SetTrigger("chemDeath");
         }
         //for timmy drinking water
