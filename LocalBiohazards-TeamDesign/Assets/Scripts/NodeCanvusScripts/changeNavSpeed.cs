@@ -52,6 +52,7 @@ public class changeNavSpeed : MonoBehaviour
     public bool playerDetected = false;
 
     bool playerSound = false;
+    public string killWeaponName;
 
     
     private void Start()
@@ -68,6 +69,8 @@ public class changeNavSpeed : MonoBehaviour
 
         eventCore.changeKillerSpriteEV.AddListener(ChangeChainsawKill);
         displayWepon(false);
+
+        killWeaponName = null;
     }
 
     private void Update()
@@ -137,6 +140,8 @@ public class changeNavSpeed : MonoBehaviour
 
     void playKillAnimation(Items killWeapon)
     {
+        killWeaponName = killWeapon.ItemName;
+
         if (killWeapon.ItemName == "Bat" || killWeapon.ItemName == "Rope")
         {
             if (!playerSound)
@@ -167,7 +172,7 @@ public class changeNavSpeed : MonoBehaviour
 
     void ChangeChainsawKill()
     {
-        animator.SetBool("playerHasStevenFace", true);
+        //animator.SetBool("playerHasStevenFace", true);
     }
   
     private void OnTriggerEnter(Collider other)

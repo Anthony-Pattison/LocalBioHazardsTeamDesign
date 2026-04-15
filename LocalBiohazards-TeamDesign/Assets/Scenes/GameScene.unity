@@ -54823,6 +54823,7 @@ MonoBehaviour:
   dead: 0
   foundCorpseBehavior: 0
   playerDetected: 0
+  killWeaponName: 
 --- !u!65 &1683515052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58569,6 +58570,7 @@ MonoBehaviour:
   dead: 0
   foundCorpseBehavior: 0
   playerDetected: 0
+  killWeaponName: 
 --- !u!65 &1756916387
 BoxCollider:
   m_ObjectHideFlags: 0
