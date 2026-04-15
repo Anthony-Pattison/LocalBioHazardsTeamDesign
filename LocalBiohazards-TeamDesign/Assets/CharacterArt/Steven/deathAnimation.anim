@@ -167,6 +167,20 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 1.1333333
+    functionName: turnPlayerSpriteOn
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.15
+    functionName: turnPlayerSpriteOn
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.1666666
     functionName: turnPlayerSpriteOn
     data: 
