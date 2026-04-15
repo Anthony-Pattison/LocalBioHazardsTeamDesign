@@ -143,7 +143,7 @@ public class changeNavSpeed : MonoBehaviour
     {
         killWeaponName = killWeapon.ItemName;
 
-        if (killWeapon.ItemName == "Bat" || killWeapon.ItemName == "Rope")
+        if (killWeapon.ItemName == "Baseball Bat" || killWeapon.ItemName == "Rope")
         {
             animator.SetTrigger("dead");
         }
